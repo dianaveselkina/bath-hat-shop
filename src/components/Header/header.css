@@ -1,0 +1,36 @@
+ul,
+ol {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.header__conteiner {
+  padding: 10px 40px;
+  background-color: #564b0d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+.header__image {
+  background-image: url('../img/баня.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 850px;
+  display: flex;
+  align-items: center;
+}
+.header__nav {
+  padding: 30px 40px;
+  background-color: #511f10;
+}
+.nav__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
