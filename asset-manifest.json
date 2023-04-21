@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/bath-hat-shop/static/css/main.01c4e505.css",
+    "main.js": "/bath-hat-shop/static/js/main.25fa604a.js",
+    "static/media/баня.jpg": "/bath-hat-shop/static/media/баня.c5063f7e1ea2d4e3628b.jpg",
+    "static/media/logo.svg": "/bath-hat-shop/static/media/logo.67017b84397d12f7fd62d8e289db5b7b.svg",
+    "index.html": "/bath-hat-shop/index.html",
+    "main.01c4e505.css.map": "/bath-hat-shop/static/css/main.01c4e505.css.map",
+    "main.25fa604a.js.map": "/bath-hat-shop/static/js/main.25fa604a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.01c4e505.css",
+    "static/js/main.25fa604a.js"
+  ]
+}
