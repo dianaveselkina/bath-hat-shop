@@ -12,7 +12,12 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 80px;
+  gap: 120px;
+}
+.titlle {
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 300;
 }
 .header__image {
   background-image: url('../img/баня.jpg');
@@ -33,4 +38,13 @@ a {
   align-items: center;
   margin: 0;
   padding: 0;
+}
+.header__icons {
+  padding-right: 50px;
+  font-size: 2.5rem;
+  color: aliceblue;
+}
+.logotip {
+  padding: 10px;
+  height: 100px;
 }

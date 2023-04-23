@@ -1,21 +1,25 @@
+import { BsCart4 } from 'react-icons/bs';
 import React from 'react';
 import './header.css';
-import { ReactComponent as LogoSvg } from '../Logo/logo.svg';
 import { Search } from '../Search/Search';
+import { ReactComponent as LogoSvg } from '../Logo/logo.svg';
 
 export const Header = (props) => {
-  const setSearchQuery = (path) => {
-    props.setSearch(path);
-  };
   return (
-    <div>
+    <div className="header">
       <div className="header__conteiner">
-        <LogoSvg className="logo" />
-        <div className="titlle">Удивительные шапки</div>
-        <Search setSearch={setSearchQuery} />
-        <div className="basket"></div>
+        <LogoSvg className="logotip" />
+        <p className="titlle">
+          Удивительные
+          <br />
+          шапки
+        </p>
+        <Search setSearch={() => {}} />
+        <div className="basket">
+          <BsCart4 className="header__icons" />
+        </div>
       </div>
-      <div className="header__image">Второй</div>
+      <div className="header__image"></div>
       <div className="header__nav">
         <ul className="nav__list">
           <li>Каталог</li>
@@ -29,4 +33,3 @@ export const Header = (props) => {
     </div>
   );
 };
-export default Header;

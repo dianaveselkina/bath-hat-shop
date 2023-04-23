@@ -1,4 +1,41 @@
 .footer__conteiner {
-  height: 100px;
+  padding: 30px;
+  height: 150px;
   background-color: #564b0d;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.logotip {
+  padding: 10px;
+  height: 100px;
+  width: 100px;
+}
+.footer__nav {
+  height: 150px;
+}
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 100%;
+}
+.footer__link {
+  font-size: 24px;
+}
+
+.footer__social {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 2.5rem;
+}
+.telephone {
+  font-size: 30px;
 }
