@@ -6,9 +6,12 @@ a {
   text-decoration: none;
   color: black;
 }
+
 .header__conteiner {
-  padding: 10px 40px;
-  background-color: #564b0d;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--main-bg-color);
+  padding: 0.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,32 +22,14 @@ a {
   font-style: italic;
   font-weight: 300;
 }
-.header__image {
-  background-image: url('../img/баня.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 850px;
-  display: flex;
-  align-items: center;
-}
-.header__nav {
-  padding: 30px 40px;
-  background-color: #511f10;
-}
-.nav__list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-}
+
 .header__icons {
   padding-right: 50px;
   font-size: 2.5rem;
   color: aliceblue;
 }
-.logotip {
-  padding: 10px;
+.header__logotip {
+  padding-left: 60px;
   height: 100px;
+  width: 150px;
 }

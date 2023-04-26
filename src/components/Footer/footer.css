@@ -1,7 +1,9 @@
 .footer__conteiner {
+  margin: 0.5rem;
+  border-radius: 0.5rem;
   padding: 30px;
   height: 150px;
-  background-color: #564b0d;
+  background-color: var(--main-bg-color);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -11,16 +13,27 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  align-items: center;
 }
-.logotip {
+.footer__logotip {
   padding: 10px;
   height: 100px;
-  width: 100px;
+  width: 150px;
 }
 .footer__nav {
   height: 150px;
 }
-.footer__list {
+.footer__info {
+  height: 150px;
+}
+.nav__link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 100%;
+}
+.info__list {
   display: flex;
   flex-direction: column;
   justify-content: space-around;

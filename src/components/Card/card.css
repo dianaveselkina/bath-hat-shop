@@ -1,0 +1,27 @@
+.card {
+  width: 250px;
+  border: 1px #564b0d solid;
+  border-radius: 10px;
+  margin: 15px;
+  padding-bottom: 10px;
+}
+
+.card__img {
+  width: 100%;
+  border-radius: 10px;
+}
+.card__button {
+  width: 150px;
+  height: 60px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.card__icons {
+  width: 60px;
+  height: 20px;
+  color: black;
+}
+.card__price {
+  font-size: 24px;
+  font-weight: bold;
+}
