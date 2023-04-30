@@ -1,6 +1,7 @@
+import React from 'react';
 import { Card } from '../Card/Card';
 import './cardlist.css';
-export const CardList = (props) => {
+export const CardList = ({ cards }) => {
   return (
     <div className="cardlist">
       <div className="cardlist__image"></div>
@@ -14,13 +15,10 @@ export const CardList = (props) => {
           <li>Sale</li>
         </ul>
       </div>
-      <div className="cardlist__card">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+      <div className="cards">
+        {cards.map((item) => {
+          return <Card key={item.updated_at} {...item} product={item} />;
+        })}
       </div>
     </div>
   );

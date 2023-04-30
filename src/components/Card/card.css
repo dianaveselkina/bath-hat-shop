@@ -1,9 +1,30 @@
 .card {
-  width: 250px;
+  position: relative;
+  width: 350px;
   border: 1px #564b0d solid;
   border-radius: 10px;
   margin: 15px;
-  padding-bottom: 10px;
+  padding: 10px;
+}
+
+.card__discount {
+  position: absolute;
+  top: 25px;
+  left: 40px;
+  padding: 2px 8px;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  background-color: #f44336;
+  border-radius: 20px;
+}
+.favorite {
+  color: red;
+  top: 25px;
+  left: 135px;
+  position: absolute;
+  padding-left: 190px;
 }
 
 .card__img {
