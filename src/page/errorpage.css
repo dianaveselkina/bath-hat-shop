@@ -1,0 +1,8 @@
+.errorpage__conteiner {
+  width: 70%;
+  height: 70%;
+  font-size: 5rem;
+  border: 1px #7ff2d2 solid;
+  margin: 20px 20px;
+  padding: 10px;
+}

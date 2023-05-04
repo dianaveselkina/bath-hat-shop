@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { CardList } from './components/CardList/CardList';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 
 import { api } from './utils/api';
+import { ProductPage } from './page/ProductPage';
+import { CatalogPage } from './page/CatalogPage';
+import { FavoritePage } from './page/FavoritePage';
+import { ErrorPage } from './page/ErrorPage';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -20,13 +24,18 @@ function App() {
 
   useEffect(() => {
     if (search === undefined) return;
-    api.searchProducts(search).then((data) => setCards(data));
+    api.searchProducts(search).then((data) => setCards(filteredCards(data)));
   }, [search]);
 
   return (
     <div className="App">
       <Header setSearch={setSearch}></Header>
-      <CardList cards={cards} />
+      <Routes>
+        <Route path="/" element={<CatalogPage cards={cards} />} />
+        <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/favorite" element={<FavoritePage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
       <Footer />
     </div>
   );

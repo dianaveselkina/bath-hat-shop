@@ -19,6 +19,12 @@ class Api {
       headers: this.headers,
     }).then((e) => onResponse(e));
   }
+
+  getProductById(id) {
+    return fetch(`${this.baseUrl}/products/${id}`, {
+      headers: this.headers,
+    }).then(onResponse);
+  }
 }
 
 const config = {
