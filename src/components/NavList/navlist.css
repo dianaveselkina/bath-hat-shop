@@ -1,0 +1,23 @@
+.navlist__image {
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  background-image: url('../img/баня.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+}
+.navlist__nav {
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 30px 40px;
+  background-color: var(--main-bg-color);
+}
+.nav__list {
+  font-size: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}

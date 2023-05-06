@@ -4,11 +4,13 @@ import './header.css';
 import { Search } from '../Search/Search';
 import { ReactComponent } from '../img/logo.svg';
 import { ReactComponent as Like } from '../img/like.svg';
+import { useLocation } from 'react-router-dom';
 
 export const Header = (props) => {
   const setSearchQuery = (path) => {
     props.setSearch(path);
   };
+  const location = useLocation();
   return (
     <div className="header">
       <div className="header__conteiner">
@@ -18,7 +20,7 @@ export const Header = (props) => {
           <br />
           шапки
         </p>
-        <Search setSearch={setSearchQuery} />
+        {location.pathname === '/' && <Search setSearch={setSearchQuery} />}
         <div className="header__pin">
           <div className="header__favorite">
             {' '}

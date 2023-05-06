@@ -9,6 +9,7 @@ import { CatalogPage } from './page/CatalogPage';
 import { FavoritePage } from './page/FavoritePage';
 import { ErrorPage } from './page/ErrorPage';
 import { Route, Routes } from 'react-router-dom';
+import { NavList } from './components/NavList/Navlist';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -16,6 +17,21 @@ function App() {
 
   const filteredCards = (cards) => {
     return cards.filter((e) => e.author._id === '64423c303291d790b3fc967c');
+  };
+
+  const onSort = (sortId) => {
+    if (sortId === 'cheaper') {
+      const newCards = cards.sort((a, b) => a.price - b.price);
+      setCards([...newCards]);
+    }
+    if (sortId === 'expensive') {
+      const newCards = cards.sort((a, b) => b.price - a.price);
+      setCards([...newCards]);
+    }
+    if (sortId === 'sale') {
+      const newCards = cards.sort((a, b) => b.discount - a.discount);
+      setCards([...newCards]);
+    }
   };
 
   useEffect(() => {
@@ -30,8 +46,14 @@ function App() {
   return (
     <div className="App">
       <Header setSearch={setSearch}></Header>
+      <NavList />
       <Routes>
-        <Route path="/" element={<CatalogPage cards={cards} />} />
+        <Route
+          path="/"
+          element={
+            <CatalogPage onSort={onSort} search={search} cards={cards} />
+          }
+        />
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/favorite" element={<FavoritePage />} />
         <Route path="*" element={<ErrorPage />} />
