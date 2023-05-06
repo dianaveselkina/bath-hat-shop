@@ -4,6 +4,9 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
+.card:hover {
+  box-shadow: 7px 7px 5px 0px rgba(86, 75, 13, 0.37);
+}
 
 @media (max-width: 580px) {
   .cards {
@@ -31,6 +34,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
 .cardlist__nav {
   margin: 0.5rem;
   border-radius: 0.5rem;

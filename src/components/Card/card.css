@@ -46,3 +46,16 @@
   font-size: 24px;
   font-weight: bold;
 }
+.card__favorite {
+  fill: rgb(255, 255, 255);
+  stroke: red;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+}
+.card__favorite_active > svg {
+  fill: red;
+  stroke: red;
+}

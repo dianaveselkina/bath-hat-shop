@@ -1,10 +1,16 @@
 import React from 'react';
 import { CardList } from '../components/CardList/CardList';
 import './catalogpage.css';
-export const CatalogPage = ({ cards, search, onSort }) => {
+export const CatalogPage = ({
+  cards,
+  user,
+  handleProductLike,
+  search,
+  onSort,
+}) => {
   const getHats = (num) => {
     const thing = num % 10;
-    if (!thing || !!num) {
+    if (!thing || !num) {
       return ' товаров';
     }
     if (thing === 1) {
@@ -13,9 +19,12 @@ export const CatalogPage = ({ cards, search, onSort }) => {
     if (thing > 1 && thing < 5) {
       return ' товара';
     }
+    if (thing > 5) {
+      return ' товаров';
+    }
   };
+
   const sortedItems = [
-    { id: 'popular', title: 'Популярные' },
     { id: 'new' },
     { id: 'cheaper' },
     { id: 'rating' },
@@ -24,14 +33,6 @@ export const CatalogPage = ({ cards, search, onSort }) => {
   ];
   return (
     <>
-      {search && (
-        <p className="search">
-          {' '}
-          По запросу <b>{search}</b> {cards.length === 1 ? 'найден' : 'найдено'}{' '}
-          {cards.length}
-          {getHats(cards.length)}
-        </p>
-      )}
       <div className="catalogpage__sort">
         {sortedItems.map((e) => (
           <span
@@ -43,7 +44,19 @@ export const CatalogPage = ({ cards, search, onSort }) => {
           </span>
         ))}
       </div>
-      <CardList cards={cards} />
+      {search && (
+        <p className="catalogpage__search">
+          {' '}
+          По запросу <b>{search}</b> {cards.length === 1 ? 'найден' : 'найдено'}{' '}
+          {cards.length}
+          {getHats(cards.length)}
+        </p>
+      )}
+      <CardList
+        cards={cards}
+        userId={user._id}
+        handleLike={handleProductLike}
+      />
     </>
   );
 };

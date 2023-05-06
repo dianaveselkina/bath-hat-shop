@@ -13,11 +13,34 @@ class Api {
       headers: this.headers,
     }).then(onResponse);
   }
+  getUserInfo() {
+    return fetch(`${this.baseUrl}/users/me`, {
+      headers: this.headers,
+    }).then(onResponse);
+  }
 
   searchProducts(path) {
     return fetch(`${this.baseUrl}/products/search?query=${path}`, {
       headers: this.headers,
     }).then((e) => onResponse(e));
+  }
+  addLike(productId) {
+    return fetch(`${this.baseUrl}/products/likes/${productId}`, {
+      headers: this.headers,
+      method: 'PUT',
+    }).then(onResponse);
+  }
+  deleteLike(productId) {
+    return fetch(`${this.baseUrl}/products/likes/${productId}`, {
+      headers: this.headers,
+      method: 'DELETE',
+    }).then(onResponse);
+  }
+  changeProductLike(productId, isLiked) {
+    return fetch(`${this.baseUrl}/products/likes/${productId}`, {
+      headers: this.headers,
+      method: isLiked ? 'DELETE' : 'PUT',
+    }).then(onResponse);
   }
 
   getProductById(id) {
