@@ -12,3 +12,8 @@
   background-image: url('../components/img/err.jpeg');
   background-repeat: no-repeat;
 }
+.button__main {
+  border-radius: 5px;
+  width: 10rem;
+  height: 2rem;
+}

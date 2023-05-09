@@ -10,6 +10,8 @@ import { FavoritePage } from './page/FavoritePage';
 import { ErrorPage } from './page/ErrorPage';
 import { Route, Routes } from 'react-router-dom';
 import { NavList } from './components/NavList/Navlist';
+import { UserContext } from './context/userContext';
+import { CardsContext } from './context/cardContext';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -31,12 +33,12 @@ function App() {
     }
   };
   useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getProductList()]).then(
-      ([userData, data]) => {
+    Promise.all([api.getUserInfo(), api.getProductList()])
+      .then(([userData, data]) => {
         setUser(userData);
         setCards(filteredCards(data.products));
-      }
-    );
+      })
+      .catch((error) => console.error('Ошибка при загрузке данных', error));
   }, []);
 
   const onSort = (sortId) => {
@@ -76,40 +78,49 @@ function App() {
     api.searchProducts(search).then((data) => setCards(filteredCards(data)));
   }, [search]);
 
+  const cardsValue = {
+    handleLike: handleProductLike,
+    cards: cards,
+    search,
+    onSort,
+  };
+
   return (
     <div className="App">
-      <Header setSearch={setSearch}></Header>
-      <NavList />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <CatalogPage
-              onSort={onSort}
-              search={search}
-              cards={cards}
-              user={user}
-              handleLike={handleProductLike}
+      <CardsContext.Provider value={cardsValue}>
+        <UserContext.Provider value={user}>
+          <Header setSearch={setSearch}></Header>
+          <NavList />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <CatalogPage
+                  onSort={onSort}
+                  search={search}
+                  cards={cards}
+                  handleLike={handleProductLike}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/bath-hat-shop"
-          element={
-            <CatalogPage
-              onSort={onSort}
-              search={search}
-              cards={cards}
-              user={user}
-              handleLike={handleProductLike}
+            <Route
+              path="/bath-hat-shop"
+              element={
+                <CatalogPage
+                  onSort={onSort}
+                  search={search}
+                  cards={cards}
+                  handleLike={handleProductLike}
+                />
+              }
             />
-          }
-        />
-        <Route path="/product/:id" element={<ProductPage />} />
-        <Route path="/favorite" element={<FavoritePage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-      <Footer />
+            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/favorite" element={<FavoritePage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+          <Footer />
+        </UserContext.Provider>
+      </CardsContext.Provider>
     </div>
   );
 }

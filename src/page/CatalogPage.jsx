@@ -52,11 +52,7 @@ export const CatalogPage = ({
           {getHats(cards.length)}
         </p>
       )}
-      <CardList
-        cards={cards}
-        userId={user._id}
-        handleLike={handleProductLike}
-      />
+      <CardList cards={cards} handleLike={handleProductLike} />
     </>
   );
 };

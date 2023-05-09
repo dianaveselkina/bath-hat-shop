@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card } from '../Card/Card';
 import './cardlist.css';
-export const CardList = ({ cards, userId, handleLike }) => {
+export const CardList = ({ cards, handleLike }) => {
   return (
     <div className="cardlist">
       <div className="cards">
@@ -11,7 +11,6 @@ export const CardList = ({ cards, userId, handleLike }) => {
               key={item.updated_at}
               {...item}
               product={item}
-              userId={userId}
               handleLike={handleLike}
             />
           );
