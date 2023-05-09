@@ -13,15 +13,8 @@ export const ProductPage = () => {
     }
   }, [id]);
 
-  // useEffect(() => {
-  //     if (location.pathname.includes('product')) {
-  //         navigate('/')
-  //     }
-  // }, [location, navigate]);
-
   return (
     <>
-      {/* isProduct ? <Product /> :  <Navigate to={'/not-found'} /> */}
       <Product product={product} />
     </>
   );

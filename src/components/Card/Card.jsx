@@ -2,10 +2,9 @@ import React, { useContext } from 'react';
 import { BsCart4 } from 'react-icons/bs';
 import './card.css';
 import { ReactComponent as Like } from './img/like.svg';
-
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/userContext';
-import { CardsContext } from '../../context/cardContext.jsx';
+import { CardsContext } from '../../context/cardContext';
 
 export const Card = ({
   name,

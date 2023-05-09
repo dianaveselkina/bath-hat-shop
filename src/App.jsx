@@ -12,17 +12,16 @@ import { Route, Routes } from 'react-router-dom';
 import { NavList } from './components/NavList/Navlist';
 import { UserContext } from './context/userContext';
 import { CardsContext } from './context/cardContext';
+import { filteredCards, findLiked } from './utils/utils';
 
 function App() {
   const [cards, setCards] = useState([]);
   const [user, setUser] = useState({});
   const [search, setSearch] = useState(undefined);
+  const [favorites, setFavorites] = useState([]);
 
-  const filteredCards = (cards) => {
-    return cards.filter((e) => e.author._id === '64423c303291d790b3fc967c');
-  };
-  const handleProductLike = async (product, isLiked) => {
-    const updatedCard = await api.changeProductLike(product._id, isLiked);
+  const handleProductLike = async (product, wasLiked) => {
+    const updatedCard = await api.changeProductLike(product._id, wasLiked);
     const index = cards.findIndex((e) => e._id === updatedCard._id);
     if (index !== -1) {
       setCards((state) => [
@@ -31,12 +30,20 @@ function App() {
         ...state.slice(index + 1),
       ]);
     }
+    wasLiked
+      ? setFavorites((state) => state.filter((f) => f._id !== updatedCard._id))
+      : setFavorites((state) => [updatedCard, ...state]);
   };
+
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getProductList()])
       .then(([userData, data]) => {
         setUser(userData);
-        setCards(filteredCards(data.products));
+        const filtered = filteredCards(data.products);
+        setCards(filtered);
+        const fav = filtered.filter((e) => findLiked(e, userData._id));
+
+        setFavorites(fav);
       })
       .catch((error) => console.error('Ошибка при загрузке данных', error));
   }, []);
@@ -82,6 +89,7 @@ function App() {
     handleLike: handleProductLike,
     cards: cards,
     search,
+    favorites,
     onSort,
   };
 
@@ -89,33 +97,23 @@ function App() {
     <div className="App">
       <CardsContext.Provider value={cardsValue}>
         <UserContext.Provider value={user}>
-          <Header setSearch={setSearch}></Header>
+          <Header setSearch={setSearch} favorites={favorites}></Header>
           <NavList />
           <Routes>
             <Route
               path="/"
               element={
-                <CatalogPage
-                  onSort={onSort}
-                  search={search}
-                  cards={cards}
-                  handleLike={handleProductLike}
-                />
+                <CatalogPage onSort={onSort} search={search} cards={cards} />
               }
             />
             <Route
               path="/bath-hat-shop"
               element={
-                <CatalogPage
-                  onSort={onSort}
-                  search={search}
-                  cards={cards}
-                  handleLike={handleProductLike}
-                />
+                <CatalogPage onSort={onSort} search={search} cards={cards} />
               }
             />
             <Route path="/product/:id" element={<ProductPage />} />
-            <Route path="/favorite" element={<FavoritePage />} />
+            <Route path="/favorites" element={<FavoritePage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
           <Footer />

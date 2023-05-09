@@ -23,20 +23,46 @@ a {
   font-weight: 300;
 }
 .header__pin {
-  width: 150px;
+  width: 200px;
+  height: 80px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .header__icons {
-  padding-right: 50px;
+  stroke: none;
+  fill: black;
+  cursor: pointer;
   font-size: 2.5rem;
   color: aliceblue;
+}
+.header__like {
+  width: 30px;
+  height: 30px;
+}
+.header__fav {
+  position: relative;
 }
 .header__logotip {
   padding-left: 60px;
   height: 100px;
   width: 150px;
+}
+.header__num {
+  position: absolute;
+  width: 25px;
+  height: 20px;
+  left: 60%;
+  bottom: 50%;
+  background: #fcfdfd;
+  border: 2px solid var(--main-bg-color);
+  border-radius: 20px;
+  color: var(--main-bg-color);
+  font-size: 11px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

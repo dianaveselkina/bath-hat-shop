@@ -6,14 +6,7 @@ export const CardList = ({ cards, handleLike }) => {
     <div className="cardlist">
       <div className="cards">
         {cards.map((item) => {
-          return (
-            <Card
-              key={item.updated_at}
-              {...item}
-              product={item}
-              handleLike={handleLike}
-            />
-          );
+          return <Card key={item.updated_at} {...item} product={item} />;
         })}
       </div>
     </div>
