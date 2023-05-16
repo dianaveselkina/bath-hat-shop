@@ -6,7 +6,7 @@ export const Product = ({ product }) => {
   return (
     <div className="productpage__conteiner">
       <Link to="/">
-        <button className="button__back">Назад</button>
+        <button className="button__main">На главную</button>
       </Link>
       <div className="productpage__img">
         <titlle className="productpage__titlle">{product.name}</titlle>

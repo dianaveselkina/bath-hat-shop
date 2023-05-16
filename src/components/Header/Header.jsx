@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { BsCart4 } from 'react-icons/bs';
+import { BsPersonBoundingBox } from 'react-icons/bs';
 
 import './header.css';
 import { Search } from '../Search/Search';
@@ -14,11 +15,13 @@ export const Header = (props) => {
     props.setSearch(path);
   };
   const location = useLocation();
-  const { favorites } = useContext(CardsContext);
+  const { favorites, setModalActive } = useContext(CardsContext);
   return (
     <div className="header">
       <div className="header__conteiner">
-        <ReactComponent className="header__logotip" />
+        <Link to="/">
+          <ReactComponent className="header__logotip" />
+        </Link>
         <p className="titlle">
           Удивительные
           <br />
@@ -34,6 +37,10 @@ export const Header = (props) => {
           </Link>
           <div className="basket">
             <BsCart4 className="header__icons" />
+            <BsPersonBoundingBox
+              onClick={() => setModalActive(true)}
+              className="header__profile"
+            />
           </div>
         </div>
       </div>

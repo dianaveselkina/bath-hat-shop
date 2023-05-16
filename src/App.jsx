@@ -13,12 +13,15 @@ import { NavList } from './components/NavList/Navlist';
 import { UserContext } from './context/userContext';
 import { CardsContext } from './context/cardContext';
 import { filteredCards, findLiked } from './utils/utils';
+import { RegistrationForm } from './components/Forms/RegistrationForm';
+import { Modal } from './components/Modal/Modal';
 
 function App() {
   const [cards, setCards] = useState([]);
   const [user, setUser] = useState({});
   const [search, setSearch] = useState(undefined);
   const [favorites, setFavorites] = useState([]);
+  const [modalActive, setModalActive] = useState(false);
 
   const handleProductLike = async (product, wasLiked) => {
     const updatedCard = await api.changeProductLike(product._id, wasLiked);
@@ -91,6 +94,7 @@ function App() {
     search,
     favorites,
     onSort,
+    setModalActive,
   };
 
   return (
@@ -98,6 +102,10 @@ function App() {
       <CardsContext.Provider value={cardsValue}>
         <UserContext.Provider value={user}>
           <Header setSearch={setSearch} favorites={favorites}></Header>
+
+          <Modal modalActive={modalActive} setModalActive={setModalActive}>
+            <RegistrationForm />
+          </Modal>
           <NavList />
           <Routes>
             <Route

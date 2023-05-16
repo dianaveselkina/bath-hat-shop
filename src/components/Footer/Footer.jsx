@@ -1,14 +1,18 @@
+import React from 'react';
 import { BsWhatsapp } from 'react-icons/bs';
 import { SiTelegram } from 'react-icons/si';
 import { SlSocialVkontakte } from 'react-icons/sl';
 import { ReactComponent } from '../img/logo.svg';
+import { Link } from 'react-router-dom';
 
 import './footer.css';
 export const Footer = () => {
   return (
     <div className="footer__conteiner">
       <div className="logo">
-        <ReactComponent className="footer__logotip" />
+        <Link to="/">
+          <ReactComponent className="footer__logotip" />
+        </Link>
         <p>© «Интернет-магазин Bath hat»</p>
       </div>
       <div className="footer__nav">

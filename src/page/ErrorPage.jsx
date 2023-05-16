@@ -5,11 +5,11 @@ export const ErrorPage = () => {
   return (
     <>
       <div className="err__conteiner">
+        <Link to="/">
+          <button className="button__main">На главную</button>
+        </Link>
         <div className="err__image"></div>
       </div>
-      <Link to="/">
-        <button className="button__main">На главную</button>
-      </Link>
     </>
   );
 };

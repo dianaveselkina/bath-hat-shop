@@ -30,6 +30,11 @@ a {
   align-items: center;
   justify-content: space-around;
 }
+.basket {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
 
 .header__icons {
   stroke: none;
@@ -38,6 +43,14 @@ a {
   font-size: 2.5rem;
   color: aliceblue;
 }
+.header__profile {
+  stroke: none;
+  fill: black;
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: aliceblue;
+}
+
 .header__like {
   width: 30px;
   height: 30px;
