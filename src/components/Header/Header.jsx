@@ -37,10 +37,12 @@ export const Header = (props) => {
           </Link>
           <div className="basket">
             <BsCart4 className="header__icons" />
-            <BsPersonBoundingBox
-              onClick={() => setModalActive(true)}
-              className="header__profile"
-            />
+            <Link to="/registrationform">
+              <BsPersonBoundingBox
+                onClick={() => setModalActive(true)}
+                className="header__profile"
+              />
+            </Link>
           </div>
         </div>
       </div>

@@ -4,8 +4,7 @@ import './form.css';
 import { BsEyeFill } from 'react-icons/bs';
 import { BsEyeSlashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-
-export const RegistrationForm = () => {
+export const AuthorizationForm = () => {
   const {
     register,
     handleSubmit,
@@ -23,58 +22,16 @@ export const RegistrationForm = () => {
       message: 'Введите email',
     },
   };
-
-  const groupRegister = {
-    required: {
-      value: true,
-      message: 'Введите номер группы',
-    },
-  };
-
   const passwordRegister = {
     required: {
       value: true,
       message: 'Введите пароль',
     },
-    minLength: {
-      value: 10,
-      message: 'Пароль должен содержать минимум 10 символов',
-    },
   };
   return (
     <div className="registration">
-      <h2>Регистрация</h2>
+      <h2>Авторизация</h2>
       <form className="registration__form" onSubmit={handleSubmit(sendData)}>
-        <div>
-          <input
-            className="registration__input"
-            type="text"
-            {...register('name')}
-            placeholder="Иван Иванов"
-          />
-        </div>
-        <div>
-          <input
-            className="registration__input"
-            type="text"
-            {...register('about')}
-            placeholder="Посетитель"
-          />
-        </div>
-        <div>
-          <input
-            className="registration__input"
-            type="text"
-            {...register('group', groupRegister)}
-            placeholder="group-12"
-          />
-          {errors?.group && (
-            <span>
-              <br />
-              {errors?.group.message}
-            </span>
-          )}
-        </div>
         <div>
           <input
             className="registration__input"
@@ -113,12 +70,12 @@ export const RegistrationForm = () => {
         </div>
         <div className="control__buttons">
           <button className="registration__button" type="submit">
-            Зарегестрироваться
+            Авторизоваться
           </button>
           <div className="registration__transition">
-            <Link to="/authorizationform">
+            <Link to="/registrationform">
               <button className="registration__button" type="submit">
-                Войти
+                Регистрация
               </button>
             </Link>
             <Link to="/passwordrecoveryform">

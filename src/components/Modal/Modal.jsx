@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import cn from 'classnames';
 import './modal.css';
+import { BsXSquare } from 'react-icons/bs';
 
 export const Modal = ({ setModalActive, modalActive, children }) => {
   const closeEscape = useCallback(
@@ -21,9 +22,11 @@ export const Modal = ({ setModalActive, modalActive, children }) => {
   return (
     <div id="modalId" className={cn('modal', { active: modalActive })}>
       <div className={cn('modal__info', { active: modalActive })}>
-        <span className="modal__close" onClick={() => setModalActive(false)}>
-          X
-        </span>
+        <BsXSquare
+          className="modal__close"
+          onClick={() => setModalActive(false)}
+        />
+
         {children}
       </div>
     </div>

@@ -15,6 +15,8 @@ import { CardsContext } from './context/cardContext';
 import { filteredCards, findLiked } from './utils/utils';
 import { RegistrationForm } from './components/Forms/RegistrationForm';
 import { Modal } from './components/Modal/Modal';
+import { AuthorizationForm } from './components/Forms/AuthorizationForn';
+import { PasswordRecoveryForm } from './components/Forms/PasswordRecoveryForm';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -103,11 +105,44 @@ function App() {
         <UserContext.Provider value={user}>
           <Header setSearch={setSearch} favorites={favorites}></Header>
 
-          <Modal modalActive={modalActive} setModalActive={setModalActive}>
-            <RegistrationForm />
-          </Modal>
           <NavList />
+
           <Routes>
+            <Route
+              path="/registrationform"
+              element={
+                <Modal
+                  modalActive={modalActive}
+                  setModalActive={setModalActive}
+                >
+                  <RegistrationForm />
+                </Modal>
+              }
+            />
+            <Route
+              path="/authorizationform"
+              element={
+                <Modal
+                  modalActive={modalActive}
+                  setModalActive={setModalActive}
+                >
+                  <AuthorizationForm />
+                </Modal>
+              }
+            />
+
+            <Route
+              path="/passwordrecoveryform"
+              element={
+                <Modal
+                  modalActive={modalActive}
+                  setModalActive={setModalActive}
+                >
+                  <PasswordRecoveryForm />
+                </Modal>
+              }
+            />
+
             <Route
               path="/"
               element={

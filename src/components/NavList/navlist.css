@@ -1,4 +1,5 @@
 .navlist__image {
+  position: relative;
   margin: 0.5rem;
   border-radius: 0.5rem;
   background-image: url('../img/баня.jpg');
@@ -21,3 +22,25 @@
   margin: 0;
   padding: 0;
 }
+.navlist__animation {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  font-size: 4rem;
+  color: white;
+}
+.navlist__animation {
+  animation: move 10s infinite linear;
+}
+
+/* @keyframes move {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 10%;
+  }
+} */
