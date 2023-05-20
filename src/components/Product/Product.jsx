@@ -2,7 +2,9 @@ import React from 'react';
 import { BsCart4 } from 'react-icons/bs';
 import './product.css';
 import { Link } from 'react-router-dom';
-export const Product = ({ product }) => {
+import { getHats } from '../../utils/utils';
+import { Reviews } from '../Reviews/Reviews';
+export const Product = ({ product, sendReview }) => {
   return (
     <div className="productpage__conteiner">
       <Link to="/">
@@ -10,12 +12,19 @@ export const Product = ({ product }) => {
       </Link>
       <div className="productpage__img">
         <titlle className="productpage__titlle">{product.name}</titlle>
+        <div className="product__rating">
+          <span>Artikul </span>
+          <span>XXXXX </span>{' '}
+          <span>
+            {product.reviews.length}
+            {getHats(product.reviews.length, 'отзыв')}
+          </span>
+        </div>
         <img src={product.pictures} alt="шапка" className="product__img" />
         <div className="productpage__description">
           <p className="postpage__titlle">Описание</p>
           <p className="postpage__description">{product.description}</p>
-          <titlle className="postpage__titlle">Отзывы</titlle>
-          <p>Оставьте свой отзыв</p>
+          <Reviews product={product} sendReview={sendReview} />
         </div>
       </div>
       <div className="productpage__infa">

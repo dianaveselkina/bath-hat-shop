@@ -7,7 +7,6 @@ export const Modal = ({ setModalActive, modalActive, children }) => {
   const closeEscape = useCallback(
     (e) => {
       if (e.key === 'Escape') {
-        document.removeEventListener('keydown', closeEscape);
         setModalActive(false);
       }
     },

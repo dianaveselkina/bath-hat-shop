@@ -19,6 +19,14 @@ class Api {
     }).then(onResponse);
   }
 
+  authorizationUser(data) {
+    return fetch(`${this.baseUrl}/signin`, {
+      headers: this.headers,
+      method: 'POST',
+      body: JSON.stringify(data),
+    }).then(onResponse);
+  }
+
   searchProducts(path) {
     return fetch(`${this.baseUrl}/products/search?query=${path}`, {
       headers: this.headers,
@@ -46,6 +54,13 @@ class Api {
   getProductById(id) {
     return fetch(`${this.baseUrl}/products/${id}`, {
       headers: this.headers,
+    }).then(onResponse);
+  }
+  addProductReview(productId, data) {
+    return fetch(`${this.baseUrl}/products/review/${productId}`, {
+      headers: this.headers,
+      method: 'POST',
+      body: JSON.stringify(data),
     }).then(onResponse);
   }
 }

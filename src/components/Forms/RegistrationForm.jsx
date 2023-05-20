@@ -10,7 +10,7 @@ export const RegistrationForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({ mode: 'onBlur' });
   const [type, setType] = useState(true);
 
   const sendData = (data) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Product } from '../components/Product/Product';
 import { api } from '../utils/api';
 import { useParams } from 'react-router-dom';
@@ -12,10 +12,21 @@ export const ProductPage = () => {
       api.getProductById(id).then((data) => setProduct(data));
     }
   }, [id]);
+  const sendReview = useCallback(
+    async (data) => {
+      const result = await api.addProductReview(product._id, data);
+      setProduct(() => ({ ...result }));
+    },
+    [product._id]
+  );
 
   return (
     <>
-      <Product product={product} />
+      {!!Object.keys(product).length ? (
+        <Product product={product} sendReview={sendReview} />
+      ) : (
+        <div>Loading...</div>
+      )}
     </>
   );
 };

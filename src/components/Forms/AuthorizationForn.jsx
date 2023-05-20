@@ -4,7 +4,8 @@ import './form.css';
 import { BsEyeFill } from 'react-icons/bs';
 import { BsEyeSlashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-export const AuthorizationForm = () => {
+import { api } from '../../utils/api';
+export const AuthorizationForm = ({ isRequired = true }) => {
   const {
     register,
     handleSubmit,
@@ -12,19 +13,23 @@ export const AuthorizationForm = () => {
   } = useForm();
   const [type, setType] = useState(true);
 
-  const sendData = (data) => {
-    console.log({ data });
+  const sendData = async (data) => {
+    try {
+      const res = await api.authorizationUser(data);
+      localStorage.setItem('token', res.token);
+    } catch (error) {
+      alert('Что-то пошло не так');
+    }
   };
-
   const emailRegister = {
     required: {
-      value: true,
+      value: isRequired,
       message: 'Введите email',
     },
   };
   const passwordRegister = {
     required: {
-      value: true,
+      value: isRequired,
       message: 'Введите пароль',
     },
   };
@@ -57,7 +62,7 @@ export const AuthorizationForm = () => {
             onClick={() => setType(!type)}
             className={`registration__input__icon`}
           >
-            {type ? <BsEyeSlashFill /> : <BsEyeFill />}
+            {type ? <BsEyeFill /> : <BsEyeSlashFill />}
           </span>
 
           {errors?.password && (

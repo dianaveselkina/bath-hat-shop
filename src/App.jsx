@@ -40,6 +40,14 @@ function App() {
       : setFavorites((state) => [updatedCard, ...state]);
   };
 
+  const productRating = (reviews) => {
+    if (!reviews || !reviews.length) {
+      return 0;
+    }
+    const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
+    return res / reviews.length;
+  };
+
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getProductList()])
       .then(([userData, data]) => {
@@ -66,6 +74,14 @@ function App() {
       setCards([...newCards]);
       return;
     }
+    if (sortId === 'rating') {
+      const newCards = cards.sort(
+        (a, b) => productRating(b.reviews) - productRating(a.reviews)
+      );
+      setCards([...newCards]);
+      return;
+    }
+
     if (sortId === 'cheaper') {
       const newCards = cards.sort((a, b) => a.price - b.price);
       setCards([...newCards]);
@@ -97,6 +113,7 @@ function App() {
     favorites,
     onSort,
     setModalActive,
+    productRating,
   };
 
   return (
@@ -149,12 +166,12 @@ function App() {
                 <CatalogPage onSort={onSort} search={search} cards={cards} />
               }
             />
-            <Route
+            {/* <Route
               path="/bath-hat-shop"
               element={
                 <CatalogPage onSort={onSort} search={search} cards={cards} />
               }
-            />
+            /> */}
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/favorites" element={<FavoritePage />} />
             <Route path="*" element={<ErrorPage />} />
