@@ -8,7 +8,7 @@ export const FavoritePage = () => {
   const { favorites } = useContext(CardsContext);
   return (
     <div className="favoritepage__conteiner">
-      <h1 className="favorites__title">Избранное</h1>
+      <h1 className="favorites__titlle">Избранное</h1>
       <CardList cards={favorites} />
       <Link to="/">
         <button className="button__main">На главную</button>

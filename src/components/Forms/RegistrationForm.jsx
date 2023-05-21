@@ -98,7 +98,7 @@ export const RegistrationForm = () => {
           />
           <span
             onClick={() => setType(!type)}
-            className={`registration__input__icon`}
+            className="registration__input__icon"
           >
             {type ? <BsEyeSlashFill /> : <BsEyeFill />}
           </span>

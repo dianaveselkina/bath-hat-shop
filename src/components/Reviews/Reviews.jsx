@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
+import { BsTrash3 } from 'react-icons/bs';
 import './reviews.css';
 
 const timeOptions = {
@@ -8,7 +9,7 @@ const timeOptions = {
   month: 'short',
   year: 'numeric',
 };
-export const Reviews = ({ product, sendReview }) => {
+export const Reviews = ({ product, sendReview, onDeleteReview }) => {
   const {
     register,
     handleSubmit,
@@ -21,6 +22,11 @@ export const Reviews = ({ product, sendReview }) => {
       message: 'Обязательное поле для заполнения',
     },
   };
+  const onSendFromReview = (data) => {
+    sendReview(data);
+    reset();
+    setShowForm(false);
+  };
 
   const [showForm, setShowForm] = useState(false);
 
@@ -31,7 +37,10 @@ export const Reviews = ({ product, sendReview }) => {
         Оставить отзыв
       </button>
       {showForm && (
-        <form className="form__reviews" onSubmit={handleSubmit(sendReview)}>
+        <form
+          className="form__reviews"
+          onSubmit={handleSubmit(onSendFromReview)}
+        >
           Rate Component
           <textarea
             {...register('text', reviewRegister)}
@@ -53,6 +62,10 @@ export const Reviews = ({ product, sendReview }) => {
                 <span className="date__reviews">
                   {' '}
                   {new Date(e.created_at).toLocaleString('ru-RU', timeOptions)}
+                  <BsTrash3
+                    onClick={() => onDeleteReview(e._id)}
+                    className="reviews__bascet"
+                  />
                 </span>
               </div>
               <div className="rating">

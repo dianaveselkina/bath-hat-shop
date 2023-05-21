@@ -25,6 +25,12 @@
   left: 340px;
   cursor: pointer;
 }
+.authorization__input__icon {
+  position: absolute;
+  top: 14px;
+  left: 380px;
+  cursor: pointer;
+}
 .registration__transition {
   display: flex;
   flex-direction: row;

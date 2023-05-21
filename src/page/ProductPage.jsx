@@ -20,10 +20,22 @@ export const ProductPage = () => {
     [product._id]
   );
 
+  const onDeleteReview = useCallback(
+    async (id) => {
+      const result = await api.deleteProductReview(product._id, id);
+      setProduct(() => ({ ...result }));
+    },
+    [product._id]
+  );
+
   return (
     <>
       {!!Object.keys(product).length ? (
-        <Product product={product} sendReview={sendReview} />
+        <Product
+          product={product}
+          sendReview={sendReview}
+          onDeleteReview={onDeleteReview}
+        />
       ) : (
         <div>Loading...</div>
       )}

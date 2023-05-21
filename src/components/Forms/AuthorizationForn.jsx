@@ -60,7 +60,7 @@ export const AuthorizationForm = ({ isRequired = true }) => {
           />
           <span
             onClick={() => setType(!type)}
-            className={`registration__input__icon`}
+            className="authorization__input__icon"
           >
             {type ? <BsEyeFill /> : <BsEyeSlashFill />}
           </span>

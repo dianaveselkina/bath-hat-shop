@@ -63,6 +63,12 @@ class Api {
       body: JSON.stringify(data),
     }).then(onResponse);
   }
+  deleteProductReview(productId, reviewId) {
+    return fetch(`${this.baseUrl}/products/review/${productId}/${reviewId}`, {
+      headers: this.headers,
+      method: 'DELETE',
+    }).then(onResponse);
+  }
 }
 
 const config = {

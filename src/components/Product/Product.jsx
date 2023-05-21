@@ -4,7 +4,7 @@ import './product.css';
 import { Link } from 'react-router-dom';
 import { getHats } from '../../utils/utils';
 import { Reviews } from '../Reviews/Reviews';
-export const Product = ({ product, sendReview }) => {
+export const Product = ({ product, sendReview, onDeleteReview }) => {
   return (
     <div className="productpage__conteiner">
       <Link to="/">
@@ -24,7 +24,11 @@ export const Product = ({ product, sendReview }) => {
         <div className="productpage__description">
           <p className="postpage__titlle">Описание</p>
           <p className="postpage__description">{product.description}</p>
-          <Reviews product={product} sendReview={sendReview} />
+          <Reviews
+            product={product}
+            sendReview={sendReview}
+            onDeleteReview={onDeleteReview}
+          />
         </div>
       </div>
       <div className="productpage__infa">
