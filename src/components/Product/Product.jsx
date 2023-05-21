@@ -4,25 +4,38 @@ import './product.css';
 import { Link } from 'react-router-dom';
 import { getHats } from '../../utils/utils';
 import { Reviews } from '../Reviews/Reviews';
+import { Rating } from '../Rating/Rating';
 export const Product = ({ product, sendReview, onDeleteReview }) => {
+  const productRating = (reviews) => {
+    if (!reviews || !reviews.length) {
+      return 0;
+    }
+    const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
+    return Math.floor(res / reviews.length);
+  };
   return (
     <div className="productpage__conteiner">
       <Link to="/">
         <button className="button__main">На главную</button>
       </Link>
       <div className="productpage__img">
-        <titlle className="productpage__titlle">{product.name}</titlle>
+        <title className="productpage__title">{product.name}</title>
         <div className="product__rating">
-          <span>Artikul </span>
-          <span>XXXXX </span>{' '}
-          <span>
-            {product.reviews.length}
-            {getHats(product.reviews.length, 'отзыв')}
-          </span>
+          <div className="product__star">
+            <Rating
+              rating={productRating(product.reviews)}
+              onDeleteReview={onDeleteReview}
+              reviews={product.reviews}
+            />
+            <span>
+              {product.reviews.length}
+              {getHats(product.reviews.length, 'отзыв')}
+            </span>
+          </div>
         </div>
         <img src={product.pictures} alt="шапка" className="product__img" />
         <div className="productpage__description">
-          <p className="postpage__titlle">Описание</p>
+          <p className="postpage__title">Описание</p>
           <p className="postpage__description">{product.description}</p>
           <Reviews
             product={product}

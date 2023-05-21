@@ -1,7 +1,8 @@
 .productpage__conteiner {
+  z-index: 3;
   position: relative;
   width: 70vw;
-  height: 70vh;
+  height: 90vh;
   border: 1px var(--main-bg-color) solid;
   margin: 20px 20px;
   padding: 10px;
@@ -18,7 +19,7 @@
   top: 10px;
   left: 10px;
 }
-.productpage__titlle {
+.productpage__title {
   margin-top: 0;
   font-weight: 800;
   font-size: 28px;
@@ -36,11 +37,16 @@
   align-items: center;
 }
 
-.postpage__titlle {
+.postpage__title {
   font-weight: 400;
   font-size: 20px;
   margin-top: 30px;
   margin-bottom: 20px;
+}
+.product__star {
+  padding-bottom: 2rem;
+
+  font-size: 2rem;
 }
 .productpage__description {
   width: 50%;

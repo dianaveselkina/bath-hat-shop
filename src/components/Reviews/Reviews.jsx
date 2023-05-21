@@ -1,4 +1,5 @@
 import React from 'react';
+import { Rating } from '../Rating/Rating';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { BsTrash3 } from 'react-icons/bs';
@@ -9,7 +10,8 @@ const timeOptions = {
   month: 'short',
   year: 'numeric',
 };
-export const Reviews = ({ product, sendReview, onDeleteReview }) => {
+
+export const Reviews = ({ product, sendReview, onDeleteReview, user }) => {
   const {
     register,
     handleSubmit,
@@ -29,10 +31,10 @@ export const Reviews = ({ product, sendReview, onDeleteReview }) => {
   };
 
   const [showForm, setShowForm] = useState(false);
-
+  const [rate, setRate] = useState(3);
   return (
     <div className="page__reviews">
-      <span className="titlle__reviews">Отзывы</span>
+      <span className="title__reviews">Отзывы</span>
       <button onClick={() => setShowForm(true)} className="button__reviews">
         Оставить отзыв
       </button>
@@ -41,7 +43,7 @@ export const Reviews = ({ product, sendReview, onDeleteReview }) => {
           className="form__reviews"
           onSubmit={handleSubmit(onSendFromReview)}
         >
-          Rate Component
+          <Rating rating={rate} setRate={setRate} isEditable={true} />
           <textarea
             {...register('text', reviewRegister)}
             type="text"
@@ -53,28 +55,35 @@ export const Reviews = ({ product, sendReview, onDeleteReview }) => {
       )}
       <div className="list__reviews">
         <div className="reviews__hr" />
-        {product.reviews.map((e) => (
-          <div key={e._id}>
-            {' '}
-            <div className="name__reviews">
-              <div className="reviews__item">
-                <span className="author__reviews"> {e.author.name}</span>
-                <span className="date__reviews">
-                  {' '}
-                  {new Date(e.created_at).toLocaleString('ru-RU', timeOptions)}
-                  <BsTrash3
-                    onClick={() => onDeleteReview(e._id)}
-                    className="reviews__bascet"
-                  />
-                </span>
+        {product.reviews
+          .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+          .map((e) => (
+            <div key={e._id}>
+              {' '}
+              <div className="name__reviews">
+                <div className="reviews__item">
+                  <span className="author__reviews"> {e.author.name}</span>
+                  <span className="date__reviews">
+                    {' '}
+                    {new Date(e.created_at).toLocaleString(
+                      'ru-RU',
+                      timeOptions
+                    )}
+                    {user?._id !== e.author._id && (
+                      <BsTrash3
+                        onClick={() => onDeleteReview(e._id)}
+                        className="reviews__bascet"
+                      />
+                    )}
+                  </span>
+                </div>
+                <div className="rating">
+                  <Rating rating={e.rating} />
+                </div>
+                <div className="text__reviews">{e.text}</div>
               </div>
-              <div className="rating">
-                {new Array(e?.rating ?? 1).fill('X')}
-              </div>
-              <div className="text__reviews">{e.text}</div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );

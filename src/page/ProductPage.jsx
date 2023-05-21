@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 export const ProductPage = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
+
   useEffect(() => {
     if (id) {
       api.getProductById(id).then((data) => setProduct(data));

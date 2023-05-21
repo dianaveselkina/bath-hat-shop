@@ -17,6 +17,14 @@ import { RegistrationForm } from './components/Forms/RegistrationForm';
 import { Modal } from './components/Modal/Modal';
 import { AuthorizationForm } from './components/Forms/AuthorizationForn';
 import { PasswordRecoveryForm } from './components/Forms/PasswordRecoveryForm';
+import { WomenHatPage } from './page/WomenHatPage';
+import { MenHatPage } from './page/MenHatPage';
+import { BabyHatPage } from './page/BabyHatPage';
+import { SalePage } from './page/SalePage';
+import { PaymentShippingPage } from './page/PaymentShippingPage';
+import { ProductCarePage } from './page/ProductCarePage';
+import { ProductReturnPage } from './page/ProductReturnPage';
+import { CatalogHatsPage } from './page/CatalogHatsPage';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -121,9 +129,7 @@ function App() {
       <CardsContext.Provider value={cardsValue}>
         <UserContext.Provider value={user}>
           <Header setSearch={setSearch} favorites={favorites}></Header>
-
           <NavList />
-
           <Routes>
             <Route
               path="/registrationform"
@@ -166,14 +172,25 @@ function App() {
                 <CatalogPage onSort={onSort} search={search} cards={cards} />
               }
             />
-            {/* <Route
+            <Route
               path="/bath-hat-shop"
               element={
                 <CatalogPage onSort={onSort} search={search} cards={cards} />
               }
-            /> */}
+            />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/favorites" element={<FavoritePage />} />
+            <Route path="/womenhatpage" element={<WomenHatPage />} />
+            <Route path="/menhatpage" element={<MenHatPage />} />
+            <Route path="/babyhatpage" element={<BabyHatPage />} />
+            <Route path="/salepage" element={<SalePage />} />
+            <Route
+              path="/paymentshippingpage"
+              element={<PaymentShippingPage />}
+            />
+            <Route path="/productcarepage" element={<ProductCarePage />} />
+            <Route path="/productreturnpage" element={<ProductReturnPage />} />
+            <Route path="/cataloghatspage" element={<CatalogHatsPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
           <Footer />

@@ -18,19 +18,19 @@ export const Footer = () => {
       <div className="footer__nav">
         <ul className="nav__link">
           <li>
-            <a href="/" className="footer__link">
+            <Link to="/paymentshippingpage" className="footer__link">
               Оплата и доставка
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/" className="footer__link">
+            <Link to="/productcarepage" className="footer__link">
               Уход за изделием
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/" className="footer__link">
+            <Link to="/productreturnpage" className="footer__link">
               Обмен и возврат
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

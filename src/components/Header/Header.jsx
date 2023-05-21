@@ -22,7 +22,7 @@ export const Header = (props) => {
         <Link to="/">
           <ReactComponent className="header__logotip" />
         </Link>
-        <p className="titlle">
+        <p className="title">
           Удивительные
           <br />
           шапки

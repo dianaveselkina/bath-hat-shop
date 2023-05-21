@@ -47,7 +47,7 @@ export const Card = ({
       </div>
       <Link to={`/product/${product._id}`} className="card__link">
         <img src={pictures} alt="шапка" className="card__img" />
-        <h3 className="card__titlle">{name}</h3>
+        <h3 className="card__title">{name}</h3>
         <p className="card__price"> {price}&nbsp;p</p>
         <button className="card__button">
           {' '}

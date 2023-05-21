@@ -1,6 +1,6 @@
 import React from 'react';
 import { CardList } from '../components/CardList/CardList';
-import './catalogpage.css';
+import './page.css';
 export const CatalogPage = ({ cards, search, onSort }) => {
   const getHats = (num) => {
     const thing = num % 10;

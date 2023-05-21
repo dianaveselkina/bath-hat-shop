@@ -1,4 +1,6 @@
 import './navlist.css';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 export const NavList = () => {
   return (
     <div className="navlist">
@@ -12,12 +14,11 @@ export const NavList = () => {
       </div>
       <div className="navlist__nav">
         <ul className="nav__list">
-          <li>Каталог</li>
-          <li>Женские шапки</li>
-          <li>Мужские шапки</li>
-          <li>Детские шапки</li>
-          <li>Новинки</li>
-          <li>Sale</li>
+          <NavLink to="/cataloghatspage">Каталог</NavLink>
+          <NavLink to="/menhatpage">Мужские шапки</NavLink>
+          <NavLink to="/babyhatpage">Детские шапки</NavLink>
+          <NavLink to="/womenhatpage">Женские шапки</NavLink>
+          <NavLink to="/salepage">Sale</NavLink>
         </ul>
       </div>
     </div>
