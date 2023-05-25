@@ -3,44 +3,49 @@ import s from './index.module.scss';
 import { ReactComponent as Star } from './star.svg';
 import cn from 'classnames';
 
-export const Rating = ({ rating, setRate = () => {}, isEditable = false }) => {
-  const emptyFragments = new Array(5).fill(<></>);
-  const [ratingArr, setRatingArr] = useState(emptyFragments);
+export const Rating = ({ rating, setRate = () => {}, isEditing = false }) => {
+  const emptyStars = new Array(5).fill(<></>);
+  const [ratingArray, setratingArray] = useState(emptyStars);
+  console.log({ rating });
 
   const changeRating = useCallback(
-    (r) => {
-      if (!isEditable) {
+    (rateStar) => {
+      if (!isEditing) {
         return;
       }
-      setRate(r);
+      setRate(rateStar);
     },
-    [setRate, isEditable]
+    [setRate, isEditing]
   );
 
-  const changeDisplay = (r) => {
-    if (!isEditable) {
+  const changeDisplay = (rate) => {
+    if (!isEditing) {
       return;
     }
-    constructRating(r);
+    constructRating(rate);
   };
 
   const constructRating = useCallback(
     (rate) => {
       console.log('sdfasdgfsadf');
-      const updatedArray = ratingArr.map((elem, index) => (
-        <Star
-          className={cn(s.star, {
-            [s.filled]: index < rate,
-            [s.editable]: isEditable,
-          })}
-          onMouseEnter={() => changeDisplay(index + 1)}
-          onMouseLeave={() => changeDisplay(rating)}
-          onClick={() => changeRating(index + 1)}
-        />
-      ));
-      setRatingArr(updatedArray);
+      const updatedArray = ratingArray.map((elem, index) => {
+        return (
+          <Star
+            className={cn(s.star, {
+              [s.filled]: index < rate,
+              [s.editing]: isEditing,
+            })}
+            onMouseEnter={() => changeDisplay(index + 1)}
+            onMouseLeave={() => changeDisplay(rating)}
+            onClick={() =>
+              changeRating(index + 1) || console.log('клик вне компонента')
+            }
+          />
+        );
+      });
+      setratingArray(updatedArray);
     },
-    [rating, isEditable]
+    [rating, isEditing]
   );
 
   useEffect(() => {
@@ -49,8 +54,8 @@ export const Rating = ({ rating, setRate = () => {}, isEditable = false }) => {
 
   return (
     <div>
-      {ratingArr.map((e, i) => (
-        <span key={i}>{e}</span>
+      {ratingArray.map((el, i) => (
+        <span key={i}>{el}</span>
       ))}
     </div>
   );

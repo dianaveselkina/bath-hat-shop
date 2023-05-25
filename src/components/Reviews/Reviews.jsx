@@ -11,7 +11,13 @@ const timeOptions = {
   year: 'numeric',
 };
 
-export const Reviews = ({ product, sendReview, onDeleteReview, user }) => {
+export const Reviews = ({
+  product,
+  sendReview,
+  onDeleteReview,
+  user,
+  rating,
+}) => {
   const {
     register,
     handleSubmit,
@@ -24,14 +30,15 @@ export const Reviews = ({ product, sendReview, onDeleteReview, user }) => {
       message: 'Обязательное поле для заполнения',
     },
   };
-  const onSendFromReview = (data) => {
-    sendReview(data);
+  const onSendFromReview = ({ text }) => {
+    sendReview({ text, rating: rate });
     reset();
     setShowForm(false);
   };
 
   const [showForm, setShowForm] = useState(false);
   const [rate, setRate] = useState(3);
+
   return (
     <div className="page__reviews">
       <span className="title__reviews">Отзывы</span>
@@ -43,7 +50,7 @@ export const Reviews = ({ product, sendReview, onDeleteReview, user }) => {
           className="form__reviews"
           onSubmit={handleSubmit(onSendFromReview)}
         >
-          <Rating rating={rate} setRate={setRate} isEditable={true} />
+          <Rating rating={rate} setRate={setRate} isEditing={true} />
           <textarea
             {...register('text', reviewRegister)}
             type="text"
