@@ -18,7 +18,6 @@ export const AuthorizationForm = ({ isRequired = true, setResponse }) => {
     try {
       const res = await api.authorizationUser(data);
       setResponse(res);
-      alert(res.data.name);
       localStorage.setItem('token', res.token);
     } catch (error) {
       alert('Введен неверный пароль или электронная почта');

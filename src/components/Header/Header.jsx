@@ -11,11 +11,10 @@ import { CardsContext } from '../../context/cardContext';
 import { Link } from 'react-router-dom';
 
 export const Header = ({ setSearch, response }) => {
-  console.log(response);
   const setSearchQuery = (path) => {
     setSearch(path);
   };
-  console.log(response?.data);
+
   const location = useLocation();
   const { favorites, setModalActive } = useContext(CardsContext);
   return (
@@ -37,23 +36,22 @@ export const Header = ({ setSearch, response }) => {
               <span className="header__num">{favorites.length}</span>
             )}
           </Link>
-          <div className="basket">
-            <BsCart4 className="header__icons" />
 
+          <BsCart4 className="header__icons" />
+          <div className="header__user">
             {!!response.data && (
               <>
                 <div>{response?.data.name}</div>
                 <div>{response?.data.email}</div>
               </>
             )}
-
-            <Link to="/registrationform">
-              <BsPersonBoundingBox
-                onClick={() => setModalActive(true)}
-                className="header__profile"
-              />
-            </Link>
           </div>
+          <Link to="/registrationform">
+            <BsPersonBoundingBox
+              onClick={() => setModalActive(true)}
+              className="header__profile"
+            />
+          </Link>
         </div>
       </div>
     </div>
