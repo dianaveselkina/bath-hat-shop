@@ -37,19 +37,19 @@ export const Footer = () => {
       <div className="footer__info">
         <ul className="info__list">
           <li>
-            <a href="/" className="footer__link">
+            <Link to="*" className="footer__link">
               Отзывы
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/" className="footer__link">
+            <Link to="*" className="footer__link">
               Интересные факты
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/" className="footer__link">
+            <Link to="*" className="footer__link">
               Довольные клиенты
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

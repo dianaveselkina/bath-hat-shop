@@ -4,6 +4,7 @@ import './form.css';
 import { BsEyeFill } from 'react-icons/bs';
 import { BsEyeSlashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { api } from '../../utils/api';
 
 export const RegistrationForm = () => {
   const {
@@ -13,8 +14,14 @@ export const RegistrationForm = () => {
   } = useForm({ mode: 'onBlur' });
   const [type, setType] = useState(true);
 
-  const sendData = (data) => {
-    console.log({ data });
+  const sendData = async (data) => {
+    try {
+      const res = await api.registrationUser(data);
+      console.log(res);
+      localStorage.setItem('token', res.token);
+    } catch (error) {
+      alert('Извините, что-то пошло не так');
+    }
   };
 
   const emailRegister = {

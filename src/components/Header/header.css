@@ -23,7 +23,7 @@ a {
   font-weight: 300;
 }
 .header__pin {
-  width: 200px;
+  width: 380px;
   height: 80px;
   display: flex;
   flex-direction: row;

@@ -24,7 +24,6 @@ import { SalePage } from './page/SalePage';
 import { PaymentShippingPage } from './page/PaymentShippingPage';
 import { ProductCarePage } from './page/ProductCarePage';
 import { ProductReturnPage } from './page/ProductReturnPage';
-import { CatalogHatsPage } from './page/CatalogHatsPage';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -32,6 +31,7 @@ function App() {
   const [search, setSearch] = useState(undefined);
   const [favorites, setFavorites] = useState([]);
   const [modalActive, setModalActive] = useState(false);
+  const [response, setResponse] = useState({});
 
   const handleProductLike = async (product, wasLiked) => {
     const updatedCard = await api.changeProductLike(product._id, wasLiked);
@@ -128,7 +128,7 @@ function App() {
     <div className="App">
       <CardsContext.Provider value={cardsValue}>
         <UserContext.Provider value={user}>
-          <Header setSearch={setSearch} favorites={favorites}></Header>
+          <Header setSearch={setSearch} response={response}></Header>
           <NavList />
           <Routes>
             <Route
@@ -149,7 +149,7 @@ function App() {
                   modalActive={modalActive}
                   setModalActive={setModalActive}
                 >
-                  <AuthorizationForm />
+                  <AuthorizationForm setResponse={setResponse} />
                 </Modal>
               }
             />
@@ -190,7 +190,6 @@ function App() {
             />
             <Route path="/productcarepage" element={<ProductCarePage />} />
             <Route path="/productreturnpage" element={<ProductReturnPage />} />
-            <Route path="/cataloghatspage" element={<CatalogHatsPage />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
           <Footer />

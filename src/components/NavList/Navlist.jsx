@@ -14,7 +14,7 @@ export const NavList = () => {
       </div>
       <div className="navlist__nav">
         <ul className="nav__list">
-          <NavLink to="/cataloghatspage">Каталог</NavLink>
+          <NavLink to="/">Каталог</NavLink>
           <NavLink to="/menhatpage">Мужские шапки</NavLink>
           <NavLink to="/babyhatpage">Детские шапки</NavLink>
           <NavLink to="/womenhatpage">Женские шапки</NavLink>

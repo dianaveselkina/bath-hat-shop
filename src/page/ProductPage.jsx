@@ -18,9 +18,9 @@ export const ProductPage = () => {
       const result = await api.addProductReview(product._id, data);
       setProduct(() => ({ ...result }));
     },
+
     [product._id]
   );
-
   const onDeleteReview = useCallback(
     async (id) => {
       const result = await api.deleteProductReview(product._id, id);

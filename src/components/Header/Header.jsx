@@ -10,10 +10,12 @@ import { useLocation } from 'react-router-dom';
 import { CardsContext } from '../../context/cardContext';
 import { Link } from 'react-router-dom';
 
-export const Header = (props) => {
+export const Header = ({ setSearch, response }) => {
+  console.log(response);
   const setSearchQuery = (path) => {
-    props.setSearch(path);
+    setSearch(path);
   };
+  console.log(response?.data);
   const location = useLocation();
   const { favorites, setModalActive } = useContext(CardsContext);
   return (
@@ -37,6 +39,14 @@ export const Header = (props) => {
           </Link>
           <div className="basket">
             <BsCart4 className="header__icons" />
+
+            {!!response.data && (
+              <>
+                <div>{response?.data.name}</div>
+                <div>{response?.data.email}</div>
+              </>
+            )}
+
             <Link to="/registrationform">
               <BsPersonBoundingBox
                 onClick={() => setModalActive(true)}

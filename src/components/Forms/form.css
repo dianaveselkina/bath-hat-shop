@@ -31,6 +31,12 @@
   left: 380px;
   cursor: pointer;
 }
+.passwordrecovery__input__icon {
+  position: absolute;
+  top: 14px;
+  left: 320px;
+  cursor: pointer;
+}
 .registration__transition {
   display: flex;
   flex-direction: row;

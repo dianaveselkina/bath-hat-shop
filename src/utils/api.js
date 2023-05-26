@@ -26,6 +26,27 @@ class Api {
       body: JSON.stringify(data),
     }).then(onResponse);
   }
+  registrationUser(data) {
+    return fetch(`${this.baseUrl}/signup`, {
+      headers: this.headers,
+      method: 'POST',
+      body: JSON.stringify(data),
+    }).then(onResponse);
+  }
+  passwordRecovery(data) {
+    return fetch(`${this.baseUrl}/forgot-password`, {
+      headers: this.headers,
+      method: 'POST',
+      body: JSON.stringify(data),
+    }).then(onResponse);
+  }
+  passwordRecoveryWithToken(token, data) {
+    return fetch(`${this.baseUrl}/password-reset/${token}`, {
+      headers: this.headers,
+      method: 'PATCH',
+      body: JSON.stringify(data),
+    }).then(onResponse);
+  }
 
   searchProducts(path) {
     return fetch(`${this.baseUrl}/products/search?query=${path}`, {
