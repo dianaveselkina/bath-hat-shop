@@ -1,7 +1,12 @@
 import React from 'react';
 import { CardList } from '../components/CardList/CardList';
 import './page.css';
+import { useSelector } from 'react-redux';
 export const CatalogPage = ({ cards, search, onSort }) => {
+  const { products } = useSelector((s) => s);
+
+  console.log({ products });
+
   const getHats = (num) => {
     const thing = num % 10;
     if (!thing || !num) {

@@ -52,6 +52,7 @@ export const Header = ({ setSearch, response }) => {
               className="header__profile"
             />
           </Link>
+          <Link to="userprofile">profile</Link>
         </div>
       </div>
     </div>

@@ -24,7 +24,9 @@ import { SalePage } from './page/SalePage';
 import { PaymentShippingPage } from './page/PaymentShippingPage';
 import { ProductCarePage } from './page/ProductCarePage';
 import { ProductReturnPage } from './page/ProductReturnPage';
-
+import { setList } from './components/Store/Slices/productsSlice';
+import { useDispatch } from 'react-redux';
+import { UserProfilePage } from './page/UserProfilePage';
 function App() {
   const [cards, setCards] = useState([]);
   const [user, setUser] = useState({});
@@ -32,6 +34,8 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   const [modalActive, setModalActive] = useState(false);
   const [response, setResponse] = useState({});
+
+  const dispatch = useDispatch();
 
   const handleProductLike = async (product, wasLiked) => {
     const updatedCard = await api.changeProductLike(product._id, wasLiked);
@@ -61,13 +65,14 @@ function App() {
       .then(([userData, data]) => {
         setUser(userData);
         const filtered = filteredCards(data.products);
+        dispatch(setList(filtered));
         setCards(filtered);
         const fav = filtered.filter((e) => findLiked(e, userData._id));
 
         setFavorites(fav);
       })
       .catch((error) => console.error('Ошибка при загрузке данных', error));
-  }, []);
+  }, [dispatch]);
 
   const onSort = (sortId) => {
     if (sortId === 'popular') {
@@ -184,6 +189,7 @@ function App() {
             <Route path="/menhatpage" element={<MenHatPage />} />
             <Route path="/babyhatpage" element={<BabyHatPage />} />
             <Route path="/salepage" element={<SalePage />} />
+            <Route path="/userprofile" element={<UserProfilePage />} />
             <Route
               path="/paymentshippingpage"
               element={<PaymentShippingPage />}
