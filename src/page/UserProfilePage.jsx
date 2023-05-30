@@ -9,16 +9,19 @@ export const UserProfilePage = () => {
   const { data } = useSelector((s) => s.user);
 
   useEffect(() => {
-    dispatch(getUser('hello from profile'));
+    dispatch(getUser());
   }, [dispatch]);
   return (
     <>
-      <div className="err__conteiner">
+      <div className="user__conteiner">
         <Link to="/">
           <button className="button__main">На главную</button>
         </Link>
         <div>
           <img src={data?.avatar} alt="avatar" />
+          <p className="user__info">{data?.name}</p>
+          <p>{data?.about}</p>
+          <p>{data?.email}</p>
         </div>
       </div>
     </>

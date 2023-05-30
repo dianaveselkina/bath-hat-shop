@@ -1,8 +1,8 @@
 .search__input {
   border-radius: 1.5rem;
   background-color: #ffffff;
-  width: 30%;
-  min-width: 150px;
+  width: 20%;
+  min-width: 120px;
   caret-color: #564b0d;
   font-size: 16px;
   line-height: 20px;

@@ -130,3 +130,17 @@
 .productcarepage__title {
   font-size: 2rem;
 }
+.user__conteiner {
+  position: relative;
+  width: 50vw;
+  height: 50vh;
+  font-size: 5rem;
+  border: 1px var(--main-bg-color) solid;
+  margin: 20px 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.user__info {
+  font-size: 2rem;
+}

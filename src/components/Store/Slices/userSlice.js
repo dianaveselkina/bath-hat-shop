@@ -8,7 +8,6 @@ const initialState = {
 
 export const getUser = createAsyncThunk('getUser', async function () {
   const data = await api.getUserInfo();
-  console.log({ data });
 });
 
 const userSlice = createSlice({

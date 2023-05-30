@@ -143,7 +143,7 @@ function App() {
                   modalActive={modalActive}
                   setModalActive={setModalActive}
                 >
-                  <RegistrationForm />
+                  <RegistrationForm setModalActive={setModalActive} />
                 </Modal>
               }
             />
@@ -154,7 +154,10 @@ function App() {
                   modalActive={modalActive}
                   setModalActive={setModalActive}
                 >
-                  <AuthorizationForm setResponse={setResponse} />
+                  <AuthorizationForm
+                    setResponse={setResponse}
+                    setModalActive={setModalActive}
+                  />
                 </Modal>
               }
             />
@@ -166,7 +169,7 @@ function App() {
                   modalActive={modalActive}
                   setModalActive={setModalActive}
                 >
-                  <PasswordRecoveryForm />
+                  <PasswordRecoveryForm setModalActive={setModalActive} />
                 </Modal>
               }
             />

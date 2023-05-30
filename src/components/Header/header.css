@@ -28,7 +28,7 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .basket {
   display: flex;
@@ -37,6 +37,7 @@ a {
 }
 
 .header__icons {
+  padding-left: 1rem;
   stroke: none;
   fill: black;
   cursor: pointer;
@@ -59,7 +60,7 @@ a {
   position: relative;
 }
 .header__logotip {
-  padding-left: 60px;
+  padding-left: 10px;
   height: 100px;
   width: 150px;
 }

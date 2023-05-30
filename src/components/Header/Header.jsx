@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { BsCart4 } from 'react-icons/bs';
 import { BsPersonBoundingBox } from 'react-icons/bs';
+import { BsArrowRepeat } from 'react-icons/bs';
 
 import './header.css';
 import { Search } from '../Search/Search';
@@ -47,12 +48,14 @@ export const Header = ({ setSearch, response }) => {
             )}
           </div>
           <Link to="/registrationform">
-            <BsPersonBoundingBox
+            <BsArrowRepeat
               onClick={() => setModalActive(true)}
               className="header__profile"
             />
           </Link>
-          <Link to="userprofile">profile</Link>
+          <Link to="userprofile">
+            <BsPersonBoundingBox className="header__profile" />
+          </Link>
         </div>
       </div>
     </div>

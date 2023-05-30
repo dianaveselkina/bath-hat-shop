@@ -5,7 +5,11 @@ import { BsEyeFill } from 'react-icons/bs';
 import { BsEyeSlashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { api } from '../../utils/api';
-export const AuthorizationForm = ({ isRequired = true, setResponse }) => {
+export const AuthorizationForm = ({
+  isRequired = true,
+  setResponse,
+  setModalActive,
+}) => {
   const {
     register,
     handleSubmit,
@@ -14,10 +18,10 @@ export const AuthorizationForm = ({ isRequired = true, setResponse }) => {
   const [type, setType] = useState(true);
 
   const sendData = async (data) => {
-    console.log(data);
     try {
       const res = await api.authorizationUser(data);
       setResponse(res);
+      setModalActive(false);
       localStorage.setItem('token', res.token);
     } catch (error) {
       alert('Введен неверный пароль или электронная почта');

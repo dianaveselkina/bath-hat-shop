@@ -6,7 +6,7 @@ import { api } from '../../utils/api';
 import { BsEyeFill } from 'react-icons/bs';
 import { BsEyeSlashFill } from 'react-icons/bs';
 
-export const PasswordRecoveryForm = () => {
+export const PasswordRecoveryForm = ({ setModalActive }) => {
   const [haveToken, setHaveToken] = useState(false);
   const {
     register,
@@ -22,13 +22,13 @@ export const PasswordRecoveryForm = () => {
           password: data.password,
         });
         localStorage.setItem('token', res.token);
+        setModalActive(false);
       } catch (error) {
         alert('Извините, что-то пошло не так');
       }
     } else {
       try {
         const res = await api.passwordRecovery(data);
-        console.log(res);
         setHaveToken(true);
       } catch (error) {
         alert('Извините, что-то пошло не так');

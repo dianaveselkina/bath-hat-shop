@@ -1,16 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
 import './page.css';
+import { CardList } from '../components/CardList/CardList';
+import { CardsContext } from '../context/cardContext';
+import { Link } from 'react-router-dom';
 
 export const BabyHatPage = () => {
+  const { favorites } = useContext(CardsContext);
   return (
-    <div className="hatpage__conteiner">
-      <div className="hatpage__item">Шапка детская</div>
-      <div className="hatpage__item">Шапка детская</div>
-      <div className="hatpage__item">Шапка детская</div>
-      <div className="hatpage__item">Шапка детская</div>
-      <div className="hatpage__item">Шапка детская</div>
-      <div className="hatpage__item">Шапка детская</div>
+    <div className="favoritepage__conteiner">
+      <h1 className="favorites__title">Шапки детские</h1>
+      <CardList cards={favorites} />
       <Link to="/">
         <button className="button__main">На главную</button>
       </Link>

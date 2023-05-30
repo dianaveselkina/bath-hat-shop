@@ -6,7 +6,6 @@ import cn from 'classnames';
 export const Rating = ({ rating, setRate = () => {}, isEditing = false }) => {
   const emptyStars = new Array(5).fill(<></>);
   const [ratingArray, setratingArray] = useState(emptyStars);
-  console.log({ rating });
 
   const changeRating = useCallback(
     (rateStar) => {
@@ -27,7 +26,6 @@ export const Rating = ({ rating, setRate = () => {}, isEditing = false }) => {
 
   const constructRating = useCallback(
     (rate) => {
-      console.log('sdfasdgfsadf');
       const updatedArray = ratingArray.map((elem, index) => {
         return (
           <Star
@@ -37,9 +35,7 @@ export const Rating = ({ rating, setRate = () => {}, isEditing = false }) => {
             })}
             onMouseEnter={() => changeDisplay(index + 1)}
             onMouseLeave={() => changeDisplay(rating)}
-            onClick={() =>
-              changeRating(index + 1) || console.log('клик вне компонента')
-            }
+            onClick={() => changeRating(index + 1)}
           />
         );
       });

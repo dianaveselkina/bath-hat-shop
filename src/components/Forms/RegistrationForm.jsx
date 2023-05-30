@@ -6,7 +6,7 @@ import { BsEyeSlashFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { api } from '../../utils/api';
 
-export const RegistrationForm = () => {
+export const RegistrationForm = ({ setModalActive }) => {
   const {
     register,
     handleSubmit,
@@ -17,8 +17,8 @@ export const RegistrationForm = () => {
   const sendData = async (data) => {
     try {
       const res = await api.registrationUser(data);
-      console.log(res);
       localStorage.setItem('token', res.token);
+      setModalActive(false);
     } catch (error) {
       alert('Извините, что-то пошло не так');
     }
