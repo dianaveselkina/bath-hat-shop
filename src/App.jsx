@@ -25,7 +25,7 @@ import { PaymentShippingPage } from './page/PaymentShippingPage';
 import { ProductCarePage } from './page/ProductCarePage';
 import { ProductReturnPage } from './page/ProductReturnPage';
 import { setList } from './components/Store/Slices/productsSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { UserProfilePage } from './page/UserProfilePage';
 function App() {
   const [cards, setCards] = useState([]);
@@ -36,6 +36,7 @@ function App() {
   const [response, setResponse] = useState({});
 
   const dispatch = useDispatch();
+  const { data: userData } = useSelector((s) => s.user);
 
   const handleProductLike = async (product, wasLiked) => {
     const updatedCard = await api.changeProductLike(product._id, wasLiked);
@@ -63,7 +64,6 @@ function App() {
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getProductList()])
       .then(([userData, data]) => {
-        setUser(userData);
         const filtered = filteredCards(data.products);
         dispatch(setList(filtered));
         setCards(filtered);

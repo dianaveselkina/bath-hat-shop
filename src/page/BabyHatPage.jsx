@@ -4,7 +4,7 @@ import { CardList } from '../components/CardList/CardList';
 import { CardsContext } from '../context/cardContext';
 import { Link } from 'react-router-dom';
 
-export const BabyHatPage = () => {
+export const BabyHatPage = (cards) => {
   const { favorites } = useContext(CardsContext);
   return (
     <div className="favoritepage__conteiner">

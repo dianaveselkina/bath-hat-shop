@@ -2,7 +2,6 @@ import React from 'react';
 import { Card } from '../Card/Card';
 import './cardlist.css';
 export const CardList = ({ cards }) => {
-  console.log({ cards });
   return (
     <div className="cardlist">
       <div className="cards">

@@ -144,3 +144,7 @@
 .user__info {
   font-size: 2rem;
 }
+.profile__avatar {
+  height: 400px;
+  width: 400px;
+}

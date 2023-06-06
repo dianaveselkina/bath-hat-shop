@@ -42,19 +42,24 @@ export const Header = ({ setSearch, response }) => {
           <div className="header__user">
             {!!response.data && (
               <>
-                <div>{response?.data.name}</div>
-                <div>{response?.data.email}</div>
+                <div>
+                  <img className="img__avatar" src={response?.data.avatar} />
+                </div>
+                <div className="header__user__info">
+                  <div>{response?.data.name}</div>
+                  <div>{response?.data.email}</div>
+                </div>
               </>
             )}
           </div>
           <Link to="/registrationform">
-            <BsArrowRepeat
+            <BsPersonBoundingBox
               onClick={() => setModalActive(true)}
               className="header__profile"
             />
           </Link>
           <Link to="userprofile">
-            <BsPersonBoundingBox className="header__profile" />
+            <BsArrowRepeat className="header__profile" />
           </Link>
         </div>
       </div>

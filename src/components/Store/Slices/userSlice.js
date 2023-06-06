@@ -8,6 +8,7 @@ const initialState = {
 
 export const getUser = createAsyncThunk('getUser', async function () {
   const data = await api.getUserInfo();
+  return data;
 });
 
 const userSlice = createSlice({
@@ -15,8 +16,16 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(getUser.pending, (state) => {
+      state.loading = true;
+    });
     builder.addCase(getUser.fulfilled, (state, action) => {
+      state.loading = false;
       state.data = action.payload;
+    });
+    builder.addCase(getUser.rejected, (state, action) => {
+      console.log({ action });
+      state.loading = false;
     });
   },
 });
