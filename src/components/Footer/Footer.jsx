@@ -42,7 +42,7 @@ export const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link to="*" className="footer__link">
+            <Link to="/interestingfactspage" className="footer__link">
               Интересные факты
             </Link>
           </li>

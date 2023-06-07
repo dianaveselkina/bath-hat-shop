@@ -26,6 +26,7 @@ import { ProductReturnPage } from './page/ProductReturnPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserProfilePage } from './page/UserProfilePage';
 import { getUser } from './components/Store/Slices/userSlice';
+import { InterestingFactsPage } from './page/InterestingFactsPage';
 function App() {
   const [cards, setCards] = useState([]);
   const [search, setSearch] = useState(undefined);
@@ -191,6 +192,10 @@ function App() {
           />
           <Route path="/productcarepage" element={<ProductCarePage />} />
           <Route path="/productreturnpage" element={<ProductReturnPage />} />
+          <Route
+            path="/interestingfactspage"
+            element={<InterestingFactsPage />}
+          />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
