@@ -3,7 +3,7 @@ import { BsCart4 } from 'react-icons/bs';
 import './card.css';
 import { ReactComponent as Like } from './img/like.svg';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../context/userContext';
+import { useSelector } from 'react-redux';
 import { CardsContext } from '../../context/cardContext';
 
 export const Card = ({
@@ -17,7 +17,7 @@ export const Card = ({
   product,
   ...args
 }) => {
-  const user = useContext(UserContext);
+  const { data: user } = useSelector((s) => s.user);
   const { handleLike } = useContext(CardsContext);
 
   const handleClick = () => {

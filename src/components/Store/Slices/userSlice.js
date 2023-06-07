@@ -11,6 +11,20 @@ export const getUser = createAsyncThunk('getUser', async function () {
   return data;
 });
 
+export const changeUser = createAsyncThunk('changeUser', async function (data) {
+  console.log({ data });
+  if (data.avatar) {
+    const res = await api.changeUserAvatar({ avatar: data.avatar });
+    return res;
+  } else {
+    const res = await api.changeUserInfo({
+      name: data.name,
+      about: data.about,
+    });
+    return res;
+  }
+});
+
 const userSlice = createSlice({
   name: 'user',
   initialState,

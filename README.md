@@ -4,8 +4,10 @@
 
 Разработка с помощью:
 
-- React 18.2.0
-- React-router-dom 6.11.0
+- React: 18.2.0
+- react-router-dom: 6.11.0
+- React-hook-form: 7.43.9
+- @reduxjs/toolkit: 1.9.5
 
 ---
 
@@ -26,3 +28,6 @@
 * Добавлен navLink
 * Добавлены страницы PaymentShippingPage, ProductReturnPage, ProductCarePage
 * Реализованы модальные окна Регистрация, Авторизация, Восстановление пароля и переход между ними
+
+* Добавлена возможность изменения пользователя
+* Подключен Redux Toolkit

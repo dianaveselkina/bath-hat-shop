@@ -144,7 +144,87 @@
 .user__info {
   font-size: 2rem;
 }
+.changeUser__conteiner {
+  position: relative;
+  width: 50vw;
+  height: 50vh;
+  font-size: 5rem;
+  border: 1px var(--main-bg-color) solid;
+  margin: 20px 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-end;
+}
 .profile__avatar {
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+.button__changeUser {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  border-radius: 5px;
+  width: 10rem;
+  height: 2rem;
+}
+.button__changeUser:hover {
+  box-shadow: 7px 7px 5px 0px rgba(86, 75, 13, 0.37);
+}
+.changeUser__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  max-width: 32rem;
+}
+.changeAvatar__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  max-width: 32rem;
+}
+.changeUser__input {
+  border-radius: 5px;
+  background-color: #ffffff;
+  max-width: 20rem;
+  font-size: 1.5rem;
+  line-height: 20px;
+  color: #1a1a1a;
+  padding: 6px 20px;
+  border: 1px solid var(--main-bg-color);
+  outline: none;
+}
+.changeUser__button {
+  border-radius: 5px;
+  border: 1px solid var(--main-bg-color);
+  padding: 6px 120px;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+.changeUser__button:hover {
+  box-shadow: 7px 7px 5px 0px rgba(86, 75, 13, 0.37);
+  cursor: pointer;
+}
+.changeUser__text {
+  font-size: 1.2rem;
+}
+.changeUser__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.avatar__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
 }

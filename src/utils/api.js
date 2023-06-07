@@ -19,6 +19,21 @@ class Api {
     }).then(onResponse);
   }
 
+  changeUserInfo(data) {
+    return fetch(`${this.baseUrl}/users/me`, {
+      headers: this.headers,
+      method: 'PATCH',
+      body: JSON.stringify(data),
+    }).then(onResponse);
+  }
+  changeUserAvatar(data) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      headers: this.headers,
+      method: 'PATCH',
+      body: JSON.stringify(data),
+    }).then(onResponse);
+  }
+
   authorizationUser(data) {
     return fetch(`${this.baseUrl}/signin`, {
       headers: this.headers,

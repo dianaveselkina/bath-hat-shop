@@ -10,7 +10,6 @@ import { FavoritePage } from './page/FavoritePage';
 import { ErrorPage } from './page/ErrorPage';
 import { Route, Routes } from 'react-router-dom';
 import { NavList } from './components/NavList/Navlist';
-import { UserContext } from './context/userContext';
 import { CardsContext } from './context/cardContext';
 import { filteredCards, findLiked } from './utils/utils';
 import { RegistrationForm } from './components/Forms/RegistrationForm';
@@ -24,12 +23,11 @@ import { SalePage } from './page/SalePage';
 import { PaymentShippingPage } from './page/PaymentShippingPage';
 import { ProductCarePage } from './page/ProductCarePage';
 import { ProductReturnPage } from './page/ProductReturnPage';
-import { setList } from './components/Store/Slices/productsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserProfilePage } from './page/UserProfilePage';
+import { getUser } from './components/Store/Slices/userSlice';
 function App() {
   const [cards, setCards] = useState([]);
-  const [user, setUser] = useState({});
   const [search, setSearch] = useState(undefined);
   const [favorites, setFavorites] = useState([]);
   const [modalActive, setModalActive] = useState(false);
@@ -62,16 +60,20 @@ function App() {
   };
 
   useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getProductList()])
-      .then(([userData, data]) => {
+    if (!userData?._id) return;
+    api
+      .getProductList()
+      .then((data) => {
         const filtered = filteredCards(data.products);
-        dispatch(setList(filtered));
         setCards(filtered);
         const fav = filtered.filter((e) => findLiked(e, userData._id));
-
         setFavorites(fav);
       })
       .catch((error) => console.error('Ошибка при загрузке данных', error));
+  }, [dispatch, userData._id]);
+
+  useEffect(() => {
+    dispatch(getUser());
   }, [dispatch]);
 
   const onSort = (sortId) => {
@@ -132,77 +134,66 @@ function App() {
   return (
     <div className="App">
       <CardsContext.Provider value={cardsValue}>
-        <UserContext.Provider value={user}>
-          <Header setSearch={setSearch} response={response}></Header>
-          <NavList />
-          <Routes>
-            <Route
-              path="/registrationform"
-              element={
-                <Modal
-                  modalActive={modalActive}
+        <Header setSearch={setSearch} response={response}></Header>
+        <NavList />
+        <Routes>
+          <Route
+            path="/registrationform"
+            element={
+              <Modal modalActive={modalActive} setModalActive={setModalActive}>
+                <RegistrationForm setModalActive={setModalActive} />
+              </Modal>
+            }
+          />
+          <Route
+            path="/authorizationform"
+            element={
+              <Modal modalActive={modalActive} setModalActive={setModalActive}>
+                <AuthorizationForm
+                  setResponse={setResponse}
                   setModalActive={setModalActive}
-                >
-                  <RegistrationForm setModalActive={setModalActive} />
-                </Modal>
-              }
-            />
-            <Route
-              path="/authorizationform"
-              element={
-                <Modal
-                  modalActive={modalActive}
-                  setModalActive={setModalActive}
-                >
-                  <AuthorizationForm
-                    setResponse={setResponse}
-                    setModalActive={setModalActive}
-                  />
-                </Modal>
-              }
-            />
+                />
+              </Modal>
+            }
+          />
 
-            <Route
-              path="/passwordrecoveryform"
-              element={
-                <Modal
-                  modalActive={modalActive}
-                  setModalActive={setModalActive}
-                >
-                  <PasswordRecoveryForm setModalActive={setModalActive} />
-                </Modal>
-              }
-            />
+          <Route
+            path="/passwordrecoveryform"
+            element={
+              <Modal modalActive={modalActive} setModalActive={setModalActive}>
+                <PasswordRecoveryForm setModalActive={setModalActive} />
+              </Modal>
+            }
+          />
 
-            <Route
-              path="/"
-              element={
-                <CatalogPage onSort={onSort} search={search} cards={cards} />
-              }
-            />
-            <Route
-              path="/bath-hat-shop"
-              element={
-                <CatalogPage onSort={onSort} search={search} cards={cards} />
-              }
-            />
-            <Route path="/product/:id" element={<ProductPage />} />
-            <Route path="/favorites" element={<FavoritePage />} />
-            <Route path="/womenhatpage" element={<WomenHatPage />} />
-            <Route path="/menhatpage" element={<MenHatPage />} />
-            <Route path="/babyhatpage" element={<BabyHatPage />} />
-            <Route path="/salepage" element={<SalePage />} />
-            <Route path="/userprofile" element={<UserProfilePage />} />
-            <Route
-              path="/paymentshippingpage"
-              element={<PaymentShippingPage />}
-            />
-            <Route path="/productcarepage" element={<ProductCarePage />} />
-            <Route path="/productreturnpage" element={<ProductReturnPage />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
-          <Footer />
-        </UserContext.Provider>
+          <Route
+            path="/"
+            element={
+              <CatalogPage onSort={onSort} search={search} cards={cards} />
+            }
+          />
+          <Route
+            path="/bath-hat-shop"
+            element={
+              <CatalogPage onSort={onSort} search={search} cards={cards} />
+            }
+          />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/favorites" element={<FavoritePage />} />
+          <Route path="/womenhatpage" element={<WomenHatPage />} />
+          <Route path="/menhatpage" element={<MenHatPage />} />
+          <Route path="/babyhatpage" element={<BabyHatPage />} />
+          <Route path="/salepage" element={<SalePage />} />
+          <Route path="/userprofile" element={<UserProfilePage />} />
+          <Route
+            path="/paymentshippingpage"
+            element={<PaymentShippingPage />}
+          />
+          <Route path="/productcarepage" element={<ProductCarePage />} />
+          <Route path="/productreturnpage" element={<ProductReturnPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+        <Footer />
       </CardsContext.Provider>
     </div>
   );
