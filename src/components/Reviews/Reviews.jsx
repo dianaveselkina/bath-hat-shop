@@ -11,19 +11,8 @@ const timeOptions = {
   year: 'numeric',
 };
 
-export const Reviews = ({
-  product,
-  sendReview,
-  onDeleteReview,
-  user,
-  rating,
-}) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm({ mode: 'onBlur' });
+export const Reviews = ({ product, sendReview, onDeleteReview, user }) => {
+  const { register, handleSubmit, reset } = useForm({ mode: 'onBlur' });
   const reviewRegister = {
     required: {
       value: true,

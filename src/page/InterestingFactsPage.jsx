@@ -1,9 +1,14 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Accordion, AccordionItem } from '@szhsin/react-accordion';
 import styles from './styles.module.css';
 import './page.css';
 export const InterestingFactsPage = () => {
   return (
     <div className="interestingfactspage__contener">
+      <Link to="/">
+        <button className="button__main">На главную</button>
+      </Link>
       <Accordion>
         <AccordionItem
           header={

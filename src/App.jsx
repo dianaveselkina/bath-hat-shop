@@ -27,6 +27,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { UserProfilePage } from './page/UserProfilePage';
 import { getUser } from './components/Store/Slices/userSlice';
 import { InterestingFactsPage } from './page/InterestingFactsPage';
+import SimpleSlider from './page/PhotoClientsPage';
 function App() {
   const [cards, setCards] = useState([]);
   const [search, setSearch] = useState(undefined);
@@ -196,6 +197,8 @@ function App() {
             path="/interestingfactspage"
             element={<InterestingFactsPage />}
           />
+          <Route path="/photoclientspage" element={<SimpleSlider />} />
+
           <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />

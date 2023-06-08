@@ -47,7 +47,7 @@ export const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link to="*" className="footer__link">
+            <Link to="/photoclientspage" className="footer__link">
               Довольные клиенты
             </Link>
           </li>

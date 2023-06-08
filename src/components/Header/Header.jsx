@@ -24,7 +24,7 @@ export const Header = ({ setSearch, response }) => {
         <Link to="/">
           <ReactComponent className="header__logotip" />
         </Link>
-        <p className="title">
+        <p className="header__title">
           Удивительные
           <br />
           шапки
