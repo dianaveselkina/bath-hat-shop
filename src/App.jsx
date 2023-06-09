@@ -28,6 +28,7 @@ import { UserProfilePage } from './page/UserProfilePage';
 import { getUser } from './components/Store/Slices/userSlice';
 import { InterestingFactsPage } from './page/InterestingFactsPage';
 import SimpleSlider from './page/PhotoClientsPage';
+import { ChartReviewsPage } from './page/ChartReviewsPage';
 function App() {
   const [cards, setCards] = useState([]);
   const [search, setSearch] = useState(undefined);
@@ -193,6 +194,8 @@ function App() {
           />
           <Route path="/productcarepage" element={<ProductCarePage />} />
           <Route path="/productreturnpage" element={<ProductReturnPage />} />
+          <Route path="/chartreviews" element={<ChartReviewsPage />} />
+
           <Route
             path="/interestingfactspage"
             element={<InterestingFactsPage />}

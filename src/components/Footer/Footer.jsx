@@ -37,7 +37,7 @@ export const Footer = () => {
       <div className="footer__info">
         <ul className="info__list">
           <li>
-            <Link to="*" className="footer__link">
+            <Link to="/chartreviews" className="footer__link">
               Отзывы
             </Link>
           </li>
