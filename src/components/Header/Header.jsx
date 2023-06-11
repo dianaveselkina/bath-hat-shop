@@ -16,6 +16,7 @@ export const Header = ({ setSearch, response }) => {
   const { favorites } = useSelector((s) => s.products);
   const location = useLocation();
   const { setModalActive } = useContext(CardsContext);
+
   return (
     <div className="header">
       <div className="header__conteiner">

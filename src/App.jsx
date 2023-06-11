@@ -56,6 +56,7 @@ function App() {
 
   const cardsValue = {
     setModalActive,
+    search,
   };
 
   return (
@@ -93,8 +94,11 @@ function App() {
             }
           />
 
-          <Route path="/" element={<CatalogPage />} />
-          <Route path="/bath-hat-shop" element={<CatalogPage />} />
+          <Route path="/" element={<CatalogPage search={search} />} />
+          <Route
+            path="/bath-hat-shop"
+            element={<CatalogPage search={search} />}
+          />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/favorites" element={<FavoritePage />} />
           <Route path="/womenhatpage" element={<WomenHatPage />} />

@@ -29,7 +29,6 @@ export const Reviews = ({ product, sendReview, onDeleteReview }) => {
 
   const [showForm, setShowForm] = useState(false);
   const [rate, setRate] = useState(3);
-
   return (
     <div className="page__reviews">
       <span className="title__reviews">Отзывы</span>
@@ -67,7 +66,7 @@ export const Reviews = ({ product, sendReview, onDeleteReview }) => {
                       'ru-RU',
                       timeOptions
                     )}
-                    {user?._id !== e.author._id && (
+                    {user?._id === e.author._id && (
                       <BsTrash3
                         onClick={() => onDeleteReview(e._id)}
                         className="reviews__bascet"
