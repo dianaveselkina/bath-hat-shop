@@ -26,4 +26,10 @@ export const getHats = (numb, field = 'товар') => {
   return ` ${field}ов`;
 };
 
-// e.author._id === '622bd81b06c7d323b8ae4614'
+export const hatsRating = (reviews) => {
+  if (!reviews || !reviews.length) {
+    return 0;
+  }
+  const res = reviews.reduce((acc, el) => (acc += el.rating), 0);
+  return res / reviews.length;
+};

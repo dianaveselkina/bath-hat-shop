@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
 import './page.css';
 import { CardList } from '../components/CardList/CardList';
-import { CardsContext } from '../context/cardContext';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const FavoritePage = () => {
-  const { favorites } = useContext(CardsContext);
+  const { favorites } = useSelector((s) => s.products);
+  console.log({ favorites });
   return (
     <div className="favoritepage__conteiner">
       <h1 className="favorites__title">Избранное</h1>

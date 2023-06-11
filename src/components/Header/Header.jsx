@@ -10,14 +10,12 @@ import { ReactComponent as Like } from '../img/like.svg';
 import { useLocation } from 'react-router-dom';
 import { CardsContext } from '../../context/cardContext';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export const Header = ({ setSearch, response }) => {
-  const setSearchQuery = (path) => {
-    setSearch(path);
-  };
-
+  const { favorites } = useSelector((s) => s.products);
   const location = useLocation();
-  const { favorites, setModalActive } = useContext(CardsContext);
+  const { setModalActive } = useContext(CardsContext);
   return (
     <div className="header">
       <div className="header__conteiner">
@@ -29,7 +27,7 @@ export const Header = ({ setSearch, response }) => {
           <br />
           шапки
         </p>
-        {location.pathname === '/' && <Search setSearch={setSearchQuery} />}
+        {location.pathname === '/' && <Search setSearch={setSearch} />}
         <div className="header__pin">
           <Link className="header__fav" to={'/favorites'}>
             <Like className="header__like" />

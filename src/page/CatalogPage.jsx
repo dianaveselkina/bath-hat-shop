@@ -1,9 +1,19 @@
 import React from 'react';
 import { CardList } from '../components/CardList/CardList';
 import './page.css';
-import { useSelector } from 'react-redux';
-export const CatalogPage = ({ cards, search, onSort }) => {
-  const { products } = useSelector((s) => s);
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  CHEAPER,
+  EXPENSIVE,
+  NEW,
+  POPULAR,
+  RATING,
+  SALE,
+} from '../constans/constans';
+import { sortedProducts } from '../components/Store/Slices/productsSlice';
+export const CatalogPage = ({ search }) => {
+  const { products } = useSelector((s) => s.products);
+  const dispatch = useDispatch();
 
   const getHats = (num) => {
     const thing = num % 10;
@@ -22,11 +32,12 @@ export const CatalogPage = ({ cards, search, onSort }) => {
   };
 
   const sortedItems = [
-    { id: 'new' },
-    { id: 'cheaper' },
-    { id: 'rating' },
-    { id: 'expensive' },
-    { id: 'sale' },
+    { id: POPULAR },
+    { id: NEW },
+    { id: CHEAPER },
+    { id: EXPENSIVE },
+    { id: RATING },
+    { id: SALE },
   ];
   return (
     <>
@@ -35,7 +46,7 @@ export const CatalogPage = ({ cards, search, onSort }) => {
           <span
             className="catalogpage__item"
             key={e.id}
-            onClick={() => onSort(e.id)}
+            onClick={() => dispatch(sortedProducts(e.id))}
           >
             {e.id}
           </span>
@@ -44,12 +55,12 @@ export const CatalogPage = ({ cards, search, onSort }) => {
       {search && (
         <p className="catalogpage__search">
           {' '}
-          По запросу <b>{search}</b> {cards.length === 1 ? 'найден' : 'найдено'}{' '}
-          {cards.length}
-          {getHats(cards.length)}
+          По запросу <b>{search}</b>{' '}
+          {products.length === 1 ? 'найден' : 'найдено'} {products.length}
+          {getHats(products.length)}
         </p>
       )}
-      <CardList cards={cards} />
+      <CardList cards={products} />
     </>
   );
 };

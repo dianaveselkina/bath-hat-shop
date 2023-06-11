@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../../utils/api';
-
+import { isError, isLoading } from '../utilsStore';
 const initialState = {
   data: [],
   loading: false,
@@ -27,20 +27,22 @@ export const changeUser = createAsyncThunk('changeUser', async function (data) {
 
 const userSlice = createSlice({
   name: 'user',
-  initialState,
-  reducers: {},
+  initialState: initialState,
   extraReducers: (builder) => {
-    builder.addCase(getUser.pending, (state) => {
-      state.loading = true;
-    });
     builder.addCase(getUser.fulfilled, (state, action) => {
-      state.loading = false;
       state.data = action.payload;
-    });
-    builder.addCase(getUser.rejected, (state, action) => {
-      console.log({ action });
       state.loading = false;
     });
+    builder.addCase(changeUser.fulfilled, (state, action) => {
+      state.data = action.payload;
+      state.loading = false;
+    });
+
+    builder.addMatcher(isError, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+    builder.addMatcher(isLoading, (state) => {});
   },
 });
 

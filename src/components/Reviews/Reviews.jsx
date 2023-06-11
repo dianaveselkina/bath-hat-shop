@@ -3,6 +3,7 @@ import { Rating } from '../Rating/Rating';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { BsTrash3 } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
 import './reviews.css';
 
 const timeOptions = {
@@ -11,8 +12,9 @@ const timeOptions = {
   year: 'numeric',
 };
 
-export const Reviews = ({ product, sendReview, onDeleteReview, user }) => {
+export const Reviews = ({ product, sendReview, onDeleteReview }) => {
   const { register, handleSubmit, reset } = useForm({ mode: 'onBlur' });
+  const { data: user } = useSelector((s) => s.user);
   const reviewRegister = {
     required: {
       value: true,

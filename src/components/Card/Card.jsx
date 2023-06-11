@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
 import { BsCart4 } from 'react-icons/bs';
 import './card.css';
 import { ReactComponent as Like } from './img/like.svg';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { CardsContext } from '../../context/cardContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchChangeProductLike } from '../Store/Slices/productsSlice';
 
 export const Card = ({
   name,
@@ -18,10 +17,11 @@ export const Card = ({
   ...args
 }) => {
   const { data: user } = useSelector((s) => s.user);
-  const { handleLike } = useContext(CardsContext);
+
+  const dispatch = useDispatch();
 
   const handleClick = () => {
-    handleLike(product, isLiked);
+    dispatch(fetchChangeProductLike({ product: product, wasLiked: isLiked }));
   };
   const isLiked = likes.some((e) => e === user._id);
 
