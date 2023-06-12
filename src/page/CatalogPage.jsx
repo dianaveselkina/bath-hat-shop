@@ -11,8 +11,8 @@ import {
   SALE,
 } from '../constans/constans';
 import { sortedProducts } from '../components/Store/Slices/productsSlice';
-export const CatalogPage = ({ search }) => {
-  const { products } = useSelector((s) => s.products);
+export const CatalogPage = () => {
+  const { products, search } = useSelector((s) => s.products);
   const dispatch = useDispatch();
 
   const getHats = (num) => {

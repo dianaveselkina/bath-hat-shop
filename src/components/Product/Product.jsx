@@ -5,10 +5,8 @@ import { Link } from 'react-router-dom';
 import { getHats } from '../../utils/utils';
 import { Reviews } from '../Reviews/Reviews';
 import { Rating } from '../Rating/Rating';
-import { useSelector } from 'react-redux';
 
 export const Product = ({ product, sendReview, onDeleteReview }) => {
-  const { data: user } = useSelector((s) => s.user);
   const productRating = (reviews) => {
     if (!reviews || !reviews.length) {
       return 0;

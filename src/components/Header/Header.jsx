@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import { BsCart4 } from 'react-icons/bs';
 import { BsPersonBoundingBox } from 'react-icons/bs';
 import { BsArrowRepeat } from 'react-icons/bs';
@@ -8,14 +7,12 @@ import { Search } from '../Search/Search';
 import { ReactComponent } from '../img/logo.svg';
 import { ReactComponent as Like } from '../img/like.svg';
 import { useLocation } from 'react-router-dom';
-import { CardsContext } from '../../context/cardContext';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-export const Header = ({ setSearch, response }) => {
+export const Header = ({ response, setModalActive }) => {
   const { favorites } = useSelector((s) => s.products);
   const location = useLocation();
-  const { setModalActive } = useContext(CardsContext);
 
   return (
     <div className="header">
@@ -28,7 +25,7 @@ export const Header = ({ setSearch, response }) => {
           <br />
           шапки
         </p>
-        {location.pathname === '/' && <Search setSearch={setSearch} />}
+        {location.pathname === '/' && <Search />}
         <div className="header__pin">
           <Link className="header__fav" to={'/favorites'}>
             <Like className="header__like" />

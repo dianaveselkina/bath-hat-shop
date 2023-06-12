@@ -12,7 +12,6 @@ export const getUser = createAsyncThunk('getUser', async function () {
 });
 
 export const changeUser = createAsyncThunk('changeUser', async function (data) {
-  console.log({ data });
   if (data.avatar) {
     const res = await api.changeUserAvatar({ avatar: data.avatar });
     return res;

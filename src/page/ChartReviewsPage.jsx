@@ -8,7 +8,6 @@ import { getChartData } from '../components/Store/Slices/productsSlice';
 export const ChartReviewsPage = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((s) => s.products);
-  console.log({ products });
   const chartData = useMemo(() => {
     const category = products.map((e) => e.name);
     const reviews = products.map((e) => e.reviews.length);

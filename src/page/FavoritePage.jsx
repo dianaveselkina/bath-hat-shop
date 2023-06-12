@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 export const FavoritePage = () => {
   const { favorites } = useSelector((s) => s.products);
-  console.log({ favorites });
   return (
     <div className="favoritepage__conteiner">
       <h1 className="favorites__title">Избранное</h1>

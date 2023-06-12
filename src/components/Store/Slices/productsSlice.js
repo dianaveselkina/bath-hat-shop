@@ -18,6 +18,7 @@ const initialState = {
   loading: false,
   total: 0,
   favorites: [],
+  search: null,
 };
 
 export const fetchProducts = createAsyncThunk(
@@ -25,16 +26,14 @@ export const fetchProducts = createAsyncThunk(
   async function (id, { fulfillWithValue, getState }) {
     try {
       const state = getState();
-      console.log({ state });
       const data = await api.getProductList();
-      return fulfillWithValue({ ...data, userId: state.user.data_id });
+      return fulfillWithValue({ ...data, userId: state.user.data?._id });
     } catch (error) {}
   }
 );
 export const fetchChangeProductLike = createAsyncThunk(
   'products/fetchChangeProductLike',
   async function (data, arg) {
-    console.log({ data });
     try {
       const updatedCard = await api.changeProductLike(
         data.product._id,
@@ -95,9 +94,10 @@ const products = createSlice({
           state.products = state.products.sort((a, b) => a.price - b.price);
       }
     },
-    getChartData: (state, action) => {
-      console.log({ state });
+    setSearch: (state, action) => {
+      state.search = action.payload;
     },
+    getChartData: (state, action) => {},
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {

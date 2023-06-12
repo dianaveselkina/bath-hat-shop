@@ -82,6 +82,9 @@
 .favoritepage__conteiner {
   position: relative;
   border: 1px var(--main-bg-color) solid;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 10px 40px;
 }
 .payment__conteiner {
   position: relative;
