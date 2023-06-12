@@ -1,31 +1,66 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import * as echarts from 'echarts';
 import './page.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getChartData } from '../components/Store/Slices/productsSlice';
 
 export const ChartReviewsPage = () => {
+  const dispatch = useDispatch();
+  const { products } = useSelector((s) => s.products);
+  console.log({ products });
+  const chartData = useMemo(() => {
+    const category = products.map((e) => e.name);
+    const reviews = products.map((e) => e.reviews.length);
+
+    return {
+      category,
+      reviews,
+    };
+  }, [products]);
+
+  useEffect(() => {
+    if (products?.length) {
+      dispatch(getChartData());
+    }
+  }, [dispatch, products]);
+
   useEffect(() => {
     const option = {
       title: {
-        text: 'Ваши отзывы',
+        text: 'Количество ваших отзывов',
         left: 'center',
         textStyle: {
           fontSize: 30,
         },
       },
+
       tooltip: {},
+      grid: {
+        width: '70%',
+      },
       xAxis: {
         type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        axisTick: {
+          alignWithLabel: true,
+        },
+        axisLabel: {
+          rotate: 30,
+          fontSize: 10,
+          fontWeight: 'bold',
+        },
+        data: chartData.category,
       },
       yAxis: {
         type: 'value',
       },
+
       series: [
         {
-          data: [150, 230, 224, 218, 135, 147, 260],
+          data: chartData.reviews,
           type: 'bar',
           color: '#564b0d',
+          barWidth: '20%',
         },
       ],
     };
@@ -33,10 +68,10 @@ export const ChartReviewsPage = () => {
     const chartDom = document.getElementById('chartreviews');
     const myChart = echarts.init(chartDom);
     option && myChart.setOption(option);
-  }, []);
+  }, [chartData]);
   return (
     <div className="chart">
-      <div id="chartreviews" style={{ width: '700px', height: '600px' }}></div>
+      <div id="chartreviews" style={{ width: '1600px', height: '700px' }}></div>
       <Link to="/">
         <button className="button__main">На главную</button>
       </Link>

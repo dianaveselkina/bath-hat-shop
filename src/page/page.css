@@ -259,8 +259,8 @@
 }
 .chart {
   position: relative;
-  width: 50vw;
-  height: 50vh;
+  width: 90vw;
+  height: 70vh;
   font-size: 5rem;
   border: 1px var(--main-bg-color) solid;
   margin: 20px 20px;

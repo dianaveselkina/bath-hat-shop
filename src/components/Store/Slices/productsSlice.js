@@ -95,6 +95,9 @@ const products = createSlice({
           state.products = state.products.sort((a, b) => a.price - b.price);
       }
     },
+    getChartData: (state, action) => {
+      console.log({ state });
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
@@ -133,5 +136,5 @@ const products = createSlice({
     builder.addMatcher(isLoading, (state) => {});
   },
 });
-export const { sortedProducts } = products.actions;
+export const { sortedProducts, setSearch, getChartData } = products.actions;
 export default products.reducer;
