@@ -33,8 +33,9 @@ export const Header = ({ response, setModalActive }) => {
               <span className="header__num">{favorites.length}</span>
             )}
           </Link>
-
-          <BsCart4 className="header__icons" />
+          <Link to="/basket">
+            <BsCart4 className="header__icons" />
+          </Link>
           <div className="header__user">
             {!!response.data && (
               <>

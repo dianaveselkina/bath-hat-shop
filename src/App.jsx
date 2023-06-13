@@ -31,6 +31,7 @@ import {
   fetchProducts,
   searchProducts,
 } from './components/Store/Slices/productsSlice';
+import { BasketPage } from './page/BasketPage';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -86,6 +87,7 @@ function App() {
             </Modal>
           }
         />
+        <Route path="/basket" element={<BasketPage />} />
         <Route path="/" element={<CatalogPage />} />
         <Route path="/bath-hat-shop" element={<CatalogPage />} />
         <Route path="/product/:id" element={<ProductPage />} />
