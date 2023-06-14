@@ -5,7 +5,7 @@ export const CardList = ({ cards }) => {
   return (
     <div className="cardlist">
       <div className="cards">
-        {cards.map((item) => {
+        {cards?.map((item) => {
           return <Card key={item.updated_at} {...item} product={item} />;
         })}
       </div>

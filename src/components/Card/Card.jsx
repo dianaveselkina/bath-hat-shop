@@ -29,11 +29,6 @@ export const Card = ({
     <div className="card">
       <div className="card__count">
         {!!discount && <span className="card__discount">-{discount}%</span>}
-        {args.tags.map((e) => (
-          <span className={`tag tag_type_${e}`} key={e}>
-            {e}
-          </span>
-        ))}
         <div className="favorite">
           <button
             onClick={handleClick}

@@ -59,7 +59,7 @@ export const ChartReviewsPage = () => {
           data: chartData.reviews,
           type: 'bar',
           color: '#564b0d',
-          barWidth: '20%',
+          barWidth: '50%',
         },
       ],
     };
