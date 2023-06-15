@@ -33,7 +33,7 @@ export const Header = ({ response, setModalActive }) => {
               <span className="header__num">{favorites.length}</span>
             )}
           </Link>
-          <Link to="/basket">
+          <Link to="*">
             <BsCart4 className="header__icons" />
           </Link>
           <div className="header__user">

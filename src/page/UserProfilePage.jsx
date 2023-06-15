@@ -27,7 +27,6 @@ export const UserProfilePage = () => {
           <Link to="/">
             <button className="button__changeUser">На главную</button>
           </Link>
-
           <div className="changeUser__avatar">
             <form
               className="changeAvatar__form"

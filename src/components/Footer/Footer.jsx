@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsWhatsapp } from 'react-icons/bs';
-import { SiTelegram } from 'react-icons/si';
-import { SlSocialVkontakte } from 'react-icons/sl';
+import { BsTelegram } from 'react-icons/bs';
+import { BsGithub } from 'react-icons/bs';
 import { ReactComponent } from '../img/logo.svg';
 import { Link } from 'react-router-dom';
 
@@ -55,9 +55,27 @@ export const Footer = () => {
       </div>
       <div className="social">
         <p className="telephone">8 920 667 90 01</p>
-        <BsWhatsapp className="footer__social" />
-        <SiTelegram className="footer__social" />
-        <SlSocialVkontakte className="footer__social" />
+        <a
+          href="https://api.whatsapp.com/send? phone=9206679001"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <BsWhatsapp className="footer__social" />
+        </a>
+        <a
+          href="https://t.me/DianaVeselkina"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <BsTelegram className="footer__social" />
+        </a>
+        <a
+          href="https://github.com/dianaveselkina"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <BsGithub className="footer__social" />
+        </a>
       </div>
     </div>
   );
