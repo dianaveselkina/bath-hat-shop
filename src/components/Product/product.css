@@ -1,5 +1,6 @@
 .productpage__conteiner {
-  z-index: 3;
+  overflow: scroll;
+    z-index: 3;
   position: relative;
   width: 70vw;
   height: 90vh;

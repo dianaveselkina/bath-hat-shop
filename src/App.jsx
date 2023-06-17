@@ -2,14 +2,12 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
-import { api } from './utils/api';
 import { ProductPage } from './page/ProductPage';
 import { CatalogPage } from './page/CatalogPage';
 import { FavoritePage } from './page/FavoritePage';
 import { ErrorPage } from './page/ErrorPage';
 import { Route, Routes } from 'react-router-dom';
 import { NavList } from './components/NavList/Navlist';
-import { filteredCards } from './utils/utils';
 import { RegistrationForm } from './components/Forms/RegistrationForm';
 import { Modal } from './components/Modal/Modal';
 import { AuthorizationForm } from './components/Forms/AuthorizationForn';
@@ -34,7 +32,7 @@ import {
 import { BasketPage } from './page/BasketPage';
 
 function App() {
-  const [cards, setCards] = useState([]);
+  
 
   const [modalActive, setModalActive] = useState(false);
   const [response, setResponse] = useState({});
@@ -46,9 +44,7 @@ function App() {
     dispatch(getUser()).then(() => dispatch(fetchProducts()));
   }, [dispatch]);
 
-  useEffect(() => {
-    api.getProductList().then((data) => setCards(filteredCards(data.products)));
-  }, []);
+  
 
   useEffect(() => {
     if (search === null) return;

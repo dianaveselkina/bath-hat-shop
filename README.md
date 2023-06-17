@@ -11,9 +11,9 @@ https://bathhat.netlify.app
 - react-router-dom: 6.11.0
 - React-hook-form: 7.43.9
 - @reduxjs/toolkit: 1.9.5
-- echarts
-- react-icons
-- react-slick
+- echarts: 5.4.2
+- react-icons: 4.8.0
+
 
 ---
 
@@ -40,6 +40,8 @@ https://bathhat.netlify.app
 * Добавлен аккордеон в страницу "Интересные факты"
 * Добавлена карусель в страницу "Довольные клиенты"
 * Добавлена диаграмма в страницу "Отзывы"
+* Добавлена сортировка по тегам в BabyHatPage, MenHatPage, WomenHatPage
+* Добавлена сортировка по discount в SalePage
 
 ---
 
