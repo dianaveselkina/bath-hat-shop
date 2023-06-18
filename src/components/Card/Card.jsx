@@ -10,7 +10,6 @@ export const Card = ({
   price,
   pictures,
   image,
-  gender,
   likes,
   discount,
   product,

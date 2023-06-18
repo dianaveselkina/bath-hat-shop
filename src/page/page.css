@@ -252,7 +252,7 @@
 .slider__conteiner {
   border: 0.1px var(--main-bg-color) solid;
   position: relative;
-  width: 40vw;
+  width: 800px;
   height: 80vh;
   font-size: 5rem;
   margin-left: auto;
@@ -268,4 +268,23 @@
   border: 1px var(--main-bg-color) solid;
   margin: 20px 20px;
   padding: 10px;
+}
+.basket__conteiner{
+  position: relative;
+  width: 50vw;
+  height: 50vh;
+  font-size: 5rem;
+  border: 1px var(--main-bg-color) solid;
+  margin: 20px 20px;
+  padding: 10px;
+}
+.basket__image{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -40%);
+  width: 90%;
+  height: 92%;
+  background-image: url('../components/img/basket.jpg');
+  background-repeat: no-repeat;
 }

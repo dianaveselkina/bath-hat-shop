@@ -33,19 +33,15 @@ import { BasketPage } from './page/BasketPage';
 
 function App() {
   
-
   const [modalActive, setModalActive] = useState(false);
   const [response, setResponse] = useState({});
-
   const dispatch = useDispatch();
   const { search } = useSelector((s) => s.products);
 
   useEffect(() => {
     dispatch(getUser()).then(() => dispatch(fetchProducts()));
   }, [dispatch]);
-
   
-
   useEffect(() => {
     if (search === null) return;
     dispatch(searchProducts(search));
@@ -108,5 +104,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

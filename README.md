@@ -9,8 +9,8 @@ https://bathhat.netlify.app
 
 - React: 18.2.0
 - react-router-dom: 6.11.0
-- React-hook-form: 7.43.9
-- @reduxjs/toolkit: 1.9.5
+- react-hook-form: 7.43.9
+- reduxjs/toolkit: 1.9.5
 - echarts: 5.4.2
 - react-icons: 4.8.0
 

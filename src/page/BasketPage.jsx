@@ -7,8 +7,8 @@ export const BasketPage = () => {
   const dispatch = useDispatch();
   return (
     <div>
-      <div className="favoritepage__conteiner">
-        <h1 className="favorites__title">Корзина</h1>
+      <div className="basket__conteiner">
+                <div className="basket__image"></div>
         <button
           onClick={() =>
             dispatch(actions.addGoods({ product: { _id: 1 }, count: 1 }))
