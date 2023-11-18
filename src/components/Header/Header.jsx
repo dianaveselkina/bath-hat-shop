@@ -21,9 +21,9 @@ export const Header = ({ response, setModalActive }) => {
           <ReactComponent className="header__logotip" />
         </Link>
         <p className="header__title">
-          Удивительные
+          Банные шапки
           <br />
-          шапки
+          из натуральной шерсти
         </p>
         {location.pathname === '/' && <Search />}
         <div className="header__pin">

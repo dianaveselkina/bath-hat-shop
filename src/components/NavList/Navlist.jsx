@@ -8,7 +8,6 @@ export const NavList = () => {
         <div>
           <p className="navlist__animation">
             Самые лучшие шапки <br /> для бани <br /> из натуральной шерсти{' '}
-            <br /> от Дианы Веселкиной
           </p>
         </div>
       </div>
